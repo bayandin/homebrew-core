@@ -3,8 +3,8 @@ class Libtensorflow < Formula
 
   desc "C interface for Google's OS library for Machine Intelligence"
   homepage "https://www.tensorflow.org/"
-  url "https://github.com/tensorflow/tensorflow/archive/v2.2.0.tar.gz"
-  sha256 "69cd836f87b8c53506c4f706f655d423270f5a563b76dc1cfa60fbc3184185a3"
+  url "https://github.com/tensorflow/tensorflow/archive/v2.3.0-rc2.tar.gz"
+  sha256 "3ab17145c9fca41a7f5d70ba18e59edba98e396bd70abc6804c6fdcfd0076ff5"
   license "Apache-2.0"
 
   bottle do
@@ -19,13 +19,13 @@ class Libtensorflow < Formula
   depends_on "python@3.8" => :build
 
   resource "numpy" do
-    url "https://files.pythonhosted.org/packages/2d/f3/795e50e3ea2dc7bc9d1a2eeea9997d5dce63b801e08dfc37c2efce341977/numpy-1.18.4.zip"
-    sha256 "bbcc85aaf4cd84ba057decaead058f43191cc0e30d6bc5d44fe336dc3d3f4509"
+    url "https://files.pythonhosted.org/packages/2c/2f/7b4d0b639a42636362827e611cfeba67975ec875ae036dd846d459d52652/numpy-1.19.1.zip"
+    sha256 "b8456987b637232602ceb4d663cb34106f7eb780e247d51a260b84760fd8f491"
   end
 
   resource "six" do
-    url "https://files.pythonhosted.org/packages/21/9f/b251f7f8a76dec1d6651be194dfba8fb8d7781d10ab3987190de8391d08e/six-1.14.0.tar.gz"
-    sha256 "236bdbdce46e6e6a3d61a337c0f8b763ca1e8717c03b369e87a7ec7ce1319c0a"
+    url "https://files.pythonhosted.org/packages/6b/34/415834bfdafca3c5f451532e8a8d9ba89a21c9743a0c59fbd0205c7f9426/six-1.15.0.tar.gz"
+    sha256 "30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259"
   end
 
   resource "test-model" do
