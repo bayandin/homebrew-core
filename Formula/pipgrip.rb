@@ -6,6 +6,7 @@ class Pipgrip < Formula
   url "https://files.pythonhosted.org/packages/6b/0e/fb6db73fa6fe581f2f2e66fc747c88754f7bf36ae87f092c75c3b7b24d6d/pipgrip-0.8.2.tar.gz"
   sha256 "e8ae2009fca122dc4410b28b31505eb447dffc600b74347e75d911543eb65e88"
   license "BSD-3-Clause"
+  revision 1
 
   bottle do
     sha256 cellar: :any_skip_relocation, arm64_monterey: "a996381ca0b954b97e90869fd22edd611d91c9c531d4d0bbb8f69971fab698a8"
@@ -16,6 +17,8 @@ class Pipgrip < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "0f149e7e2c9e915fb1ca305c567959f4a03ddc2b495673cf5209f3ca8d3cf8c4"
   end
 
+  depends_on "python@3.8" => [:build, :test]
+  depends_on "python@3.9" => [:build, :test]
   depends_on "python@3.10"
   depends_on "six"
 
@@ -49,8 +52,23 @@ class Pipgrip < Formula
     sha256 "e9a504e793efbca1b8e0e9cb979a249cf4a0a7b5b8c9e8b65a5e39d49529c1c4"
   end
 
+  def pythons
+    deps.map(&:to_formula)
+        .select { |f| f.name.match?(/python@\d\.\d+/) }
+        .map(&:opt_bin)
+        .map { |bin| bin/"python3" }
+  end
+
   def install
-    virtualenv_install_with_resources
+    pythons.each do |python|
+      xy = Language::Python.major_minor_version python
+
+      venv = virtualenv_create(libexec/"python#{xy}", python)
+      venv.pip_install resources
+      venv.pip_install buildpath
+      bin.install_symlink libexec/"python#{xy}/bin/pipgrip" => "pipgrip#{xy}"
+    end
+    bin.install_symlink libexec/"python3.10/bin/pipgrip" => "pipgrip"
   end
 
   test do
