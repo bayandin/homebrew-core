@@ -237,9 +237,6 @@
   "cycode": {
     "exclude_packages": ["certifi", "PyYAML", "six"]
   },
-  "cyral-gimme-db-token": {
-    "exclude_packages": ["certifi", "cffi", "cryptography", "pycparser", "PyYAML", "six"]
-  },
   "datalad": {
     "exclude_packages": ["certifi"]
   },
