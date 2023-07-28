@@ -1,8 +1,8 @@
 class Cp2k < Formula
   desc "Quantum chemistry and solid state physics software package"
   homepage "https://www.cp2k.org/"
-  url "https://github.com/cp2k/cp2k/releases/download/v2023.1/cp2k-2023.1.tar.bz2"
-  sha256 "dff343b4a80c3a79363b805429bdb3320d3e1db48e0ff7d20a3dfd1c946a51ce"
+  url "https://github.com/cp2k/cp2k/releases/download/v2023.2/cp2k-2023.2.tar.bz2"
+  sha256 "adbcc903c1a78cba98f49fe6905a62b49f12e3dfd7cedea00616d1a5f50550db"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -53,6 +53,7 @@ class Cp2k < Formula
 
       # libint needs `-lstdc++` (https://github.com/cp2k/cp2k/blob/master/INSTALL.md)
       # Can remove if added upstream to Darwin-gfortran.psmp and Darwin-gfortran.ssmp
+      # PR submitted: https://github.com/cp2k/cp2k/pull/2966
       libs = %W[
         -L#{Formula["fftw"].opt_lib}
         -lfftw3
@@ -65,18 +66,18 @@ class Cp2k < Formula
       ENV["LIBINT_LIB_DIR"] = libexec/"lib"
 
       # CP2K configuration is done through editing of arch files
-      inreplace Dir["arch/Darwin-gfortran.*"].each do |s|
+      inreplace Dir["arch/Darwin-gfortran.*"].to_a.each do |s|
         s.gsub!(/DFLAGS *=/, "DFLAGS = -D__FFTW3")
         s.gsub!(/FCFLAGS *=/, "FCFLAGS = -I#{Formula["fftw"].opt_include}")
         s.gsub!(/LIBS *=/, "LIBS = #{libs.join(" ")}")
       end
 
       # MPI versions link to scalapack
-      inreplace Dir["arch/Darwin-gfortran.p*"],
+      inreplace Dir["arch/Darwin-gfortran.p*"].to_a,
                 /LIBS *=/, "LIBS = -L#{Formula["scalapack"].opt_lib}"
 
       # OpenMP versions link to specific fftw3 library
-      inreplace Dir["arch/Darwin-gfortran.*smp"],
+      inreplace Dir["arch/Darwin-gfortran.*smp"].to_a,
                 "-lfftw3", "-lfftw3 -lfftw3_threads"
     else
       args = %W[
