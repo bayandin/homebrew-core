@@ -41,8 +41,10 @@ class Gismo < Formula
     args << case Hardware.oldest_cpu
     when :arm_vortex_tempest
       "-DTARGET_ARCHITECTURE=apple-m1"
+    when :core2
+      "-DTARGET_ARCHITECTURE=penryn"
     else
-      "-DTARGET_ARCHITECTURE=" << Hardware.oldest_cpu.upcase.to_s
+      "-DTARGET_ARCHITECTURE=generic"
     end
 
     system "cmake", "-S", ".", "-B", "build", *args
