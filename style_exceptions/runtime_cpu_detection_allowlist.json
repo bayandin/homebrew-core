@@ -4,6 +4,7 @@
   "apache-arrow",
   "blis",
   "fftw",
+  "gismo",
   "highway",
   "libvpx",
   "luajit",
