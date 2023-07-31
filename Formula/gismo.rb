@@ -11,40 +11,38 @@ class Gismo < Formula
     depends_on "cmake" => :build
   end
 
-  option "with-mpi",     "Enable MPI parallelization"
-  option "with-superlu", "Enable SuperLU support"
-  option "with-umfpack", "Enable Umfpack support"
-
-  option "without-openmp", "Disable OpenMP parallelization"
-
   depends_on "cmake" => :build
-  depends_on "open-mpi" if build.with? "mpi"
   depends_on "openblas"
-  depends_on "suite-sparse" if build.with? "umfpack"
-  depends_on "superlu" => :optional
+  depends_on "suite-sparse"
+  depends_on "superlu"
 
-  unless build.without? "openmp"
-    on_macos do
-      depends_on "libomp"
-    end
+  on_macos do
+    depends_on "libomp"
   end
 
   def install
-    args = std_cmake_args << "-DBLA_VENDOR=OpenBLAS"
-    args << "-DGISMO_WITH_MPI=ON" if build.with? "mpi"
-    args << "-DGISMO_WITH_SUPERLU=ON" if build.with? "superlu"
-    args << "-DGISMO_WITH_UMFPACK=ON" if build.with? "umfpack"
+    ENV.runtime_cpu_detection
 
-    unless build.without? "openmp"
-      if OS.mac?
-        libomp = Formula["libomp"]
-        args << "-DOpenMP_C_FLAGS=-Xpreprocessor -fopenmp -I#{libomp.opt_include}"
-        args << "-DOpenMP_C_LIB_NAMES=omp"
-        args << "-DOpenMP_CXX_FLAGS=-Xpreprocessor -fopenmp -I#{libomp.opt_include}"
-        args << "-DOpenMP_CXX_LIB_NAMES=omp"
-        args << "-DOpenMP_omp_LIBRARY=#{libomp.opt_lib}/libomp.a"
-      end
-      args << "-DGISMO_WITH_OPENMP=ON"
+    args = std_cmake_args
+    args << "-DBLA_VENDOR=OpenBLAS"
+    args << "-DGISMO_WITH_SUPERLU=ON"
+    args << "-DGISMO_WITH_UMFPACK=ON"
+
+    if OS.mac?
+      libomp = Formula["libomp"]
+      args << "-DOpenMP_C_FLAGS=-Xpreprocessor -fopenmp -I#{libomp.opt_include}"
+      args << "-DOpenMP_C_LIB_NAMES=omp"
+      args << "-DOpenMP_CXX_FLAGS=-Xpreprocessor -fopenmp -I#{libomp.opt_include}"
+      args << "-DOpenMP_CXX_LIB_NAMES=omp"
+      args << "-DOpenMP_omp_LIBRARY=#{libomp.opt_lib}/libomp.a"
+    end
+    args << "-DGISMO_WITH_OPENMP=ON"
+
+    args << case Hardware.oldest_cpu
+    when :arm_vortex_tempest
+      "-DTARGET_ARCHITECTURE=apple-m1"
+    else
+      "-DTARGET_ARCHITECTURE=" << Hardware.oldest_cpu.upcase.to_s
     end
 
     system "cmake", "-S", ".", "-B", "build", *args
