@@ -3,9 +3,8 @@ class ArcadeLearningEnvironment < Formula
 
   desc "Platform for AI research"
   homepage "https://github.com/mgbellemare/Arcade-Learning-Environment"
-  url "https://github.com/mgbellemare/Arcade-Learning-Environment.git",
-      tag:      "v0.8.1",
-      revision: "ba84c1480008aa606ebc1efd7a04a7a7729796d4"
+  url "https://github.com/mgbellemare/Arcade-Learning-Environment/archive/v0.8.1.tar.gz"
+  sha256 "28960616cd89c18925ced7bbdeec01ab0b2ebd2d8ce5b7c88930e97381b4c3b5"
   license "GPL-2.0-only"
   head "https://github.com/mgbellemare/Arcade-Learning-Environment.git", branch: "master"
 
@@ -29,9 +28,18 @@ class ArcadeLearningEnvironment < Formula
 
   fails_with gcc: "5"
 
-  resource "importlib-resources" do
-    url "https://files.pythonhosted.org/packages/4e/a2/3cab1de83f95dd15297c15bdc04d50902391d707247cada1f021bbfe2149/importlib_resources-5.12.0.tar.gz"
-    sha256 "4be82589bf5c1d7999aedf2a45159d10cb3ca4f19b2271f8792bc8e6da7b22f6"
+  # Don't require importlib-resources for recent pythons
+  # https://github.com/mgbellemare/Arcade-Learning-Environment/pull/491
+  patch do
+    url "https://github.com/mgbellemare/Arcade-Learning-Environment/commit/61da474b8e3b3993969c9e4de3933559598613e1.patch?full_index=1"
+    sha256 "72baf458430b81a6b8e56f1fc8edde732ba210c3540a6775000d6393dbcb73dd"
+  end
+
+  # Allow building from tarball
+  # https://github.com/mgbellemare/Arcade-Learning-Environment/pull/492
+  patch do
+    url "https://github.com/mgbellemare/Arcade-Learning-Environment/commit/7e3d9ffbca6d97b49f48e46c030b4236eb09019b.patch?full_index=1"
+    sha256 "64cf83625fe19bc32097b34853db6752fcf835a3d42909a9ac88315dfca2b85f"
   end
 
   def python3
@@ -47,25 +55,13 @@ class ArcadeLearningEnvironment < Formula
     system "cmake", "--install", "build"
     pkgshare.install "tests/resources/tetris.bin"
 
-    venv = virtualenv_create(libexec, python3)
-    venv.pip_install resources
-
     # error: no member named 'signbit' in the global namespace
     inreplace "setup.py", "cmake_args = [", "\\0\"-DCMAKE_OSX_SYSROOT=#{MacOS.sdk_path}\"," if OS.mac?
-
-    # `venv.pip_install_and_link buildpath` fails to install scripts, so manually run setup.py instead
-    bin_before = (libexec/"bin").children.to_set
-    venv_python = libexec/"bin/python"
-    system venv_python, *Language::Python.setup_install_args(libexec, venv_python)
-    bin.install_symlink ((libexec/"bin").children.to_set - bin_before).to_a
-
-    site_packages = Language::Python.site_packages(python3)
-    pth_contents = "import site; site.addsitedir('#{libexec/site_packages}')\n"
-    (prefix/site_packages/"homebrew-ale-py.pth").write pth_contents
+    system python3, "-m", "pip", "install", *std_pip_args, "."
 
     # Replace vendored `libSDL2` with a symlink to our own.
     libsdl2 = Formula["sdl2"].opt_lib/shared_library("libSDL2")
-    vendored_libsdl2_dir = libexec/site_packages/"ale_py"
+    vendored_libsdl2_dir = prefix/Language::Python.site_packages(python3)/"ale_py"
     (vendored_libsdl2_dir/shared_library("libSDL2")).unlink
 
     # Use `ln_s` to avoid referencing a Cellar path.
