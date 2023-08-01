@@ -44,7 +44,7 @@ class Gismo < Formula
     when :core2
       "-DTARGET_ARCHITECTURE=penryn"
     else
-      "-DTARGET_ARCHITECTURE=generic"
+      "-DTARGET_ARCHITECTURE=" << Hardware.oldest_cpu.upcase.to_s
     end
 
     system "cmake", "-S", ".", "-B", "build", *args
