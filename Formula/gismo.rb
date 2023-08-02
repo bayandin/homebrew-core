@@ -10,6 +10,7 @@ class Gismo < Formula
   end
 
   depends_on "cmake" => :build
+  depends_on "openblas"
   depends_on "suite-sparse"
   depends_on "superlu"
 
@@ -17,41 +18,26 @@ class Gismo < Formula
     depends_on "libomp"
   end
 
-  on_linux do
-    depends_on "openblas"
-  end
-
   def install
-    # ENV.runtime_cpu_detection
-
     args = std_cmake_args
-    args << "-DBLA_VENDOR=Apple"    if OS.mac?
-    args << "-DBLA_VENDOR=OpenBLAS" if OS.linux?
+    args << "-DBLA_VENDOR=OpenBLAS"
 
-    superlu = Formula["superlu"]
-    args << "-DSUPERLUDIR=#{superlu.opt_prefix}"
+    args << "-DSUPERLUDIR=#{Formula["superlu"].opt_prefix}"
     args << "-DGISMO_WITH_SUPERLU=ON"
 
-    umfpack = Formula["suite-sparse"]
-    args << "-DUMFPACKDIR=#{umfpack.opt_prefix}"
+    args << "-DUMFPACKDIR=#{Formula["suite-sparse"].opt_prefix}"
     args << "-DGISMO_WITH_UMFPACK=ON"
 
-    if OS.mac?
-      libomp = Formula["libomp"]
-      args << "-DOpenMP_C_FLAGS=-Xpreprocessor -fopenmp -I#{libomp.opt_include}"
-      args << "-DOpenMP_C_LIB_NAMES=omp"
-      args << "-DOpenMP_CXX_FLAGS=-Xpreprocessor -fopenmp -I#{libomp.opt_include}"
-      args << "-DOpenMP_CXX_LIB_NAMES=omp"
-      args << "-DOpenMP_omp_LIBRARY=#{libomp.opt_lib}/libomp.a"
-    end
+    args << "-DOpenMP_CXX_FLAGS=-Xpreprocessor -fopenmp -I#{Formula["libomp"].opt_include}" if OS.mac?
     args << "-DGISMO_WITH_OPENMP=ON"
 
-    if OS.mac?
-      args << "-DTARGET_ARCHITECTURE=apple-m1" if Hardware::CPU.arm?
-      args << "-DTARGET_ARCHITECTURE=penryn"   if Hardware::CPU.intel?
-    elsif OS.linux?
-      args << "-DTARGET_ARCHITECTURE=penryn"   if Hardware::CPU.intel?
-    end
+    target_arch =
+      case Hardware.oldest_cpu
+      when :arm_vortex_tempest then "apple-m1"
+      when :core2 then "penryn"
+      else "generic"
+      end
+    args << "-DTARGET_ARCHITECTURE=#{target_arch}"
 
     system "cmake", "-S", ".", "-B", "build", *args
     system "cmake", "--build", "build"
