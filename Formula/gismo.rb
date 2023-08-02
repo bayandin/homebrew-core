@@ -34,8 +34,7 @@ class Gismo < Formula
     target_arch =
       case Hardware.oldest_cpu
       when :arm_vortex_tempest then "apple-m1"
-      when :core2 then "penryn"
-      else "generic"
+      else "penryn"
       end
     args.push("-DTARGET_ARCHITECTURE=#{target_arch}")
 
