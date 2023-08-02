@@ -19,17 +19,17 @@ class Gismo < Formula
   end
 
   def install
-    args = std_cmake_args
-    args << "-DBLA_VENDOR=OpenBLAS"
+    args = []
+    args.push("-DBLA_VENDOR=OpenBLAS")
 
-    args << "-DSUPERLUDIR=#{Formula["superlu"].opt_prefix}"
-    args << "-DGISMO_WITH_SUPERLU=ON"
+    args.push("-DSUPERLUDIR=#{Formula["superlu"].opt_prefix}")
+    args.push("-DGISMO_WITH_SUPERLU=ON")
 
-    args << "-DUMFPACKDIR=#{Formula["suite-sparse"].opt_prefix}"
-    args << "-DGISMO_WITH_UMFPACK=ON"
+    args.push("-DUMFPACKDIR=#{Formula["suite-sparse"].opt_prefix}")
+    args.push("-DGISMO_WITH_UMFPACK=ON")
 
-    args << "-DOpenMP_CXX_FLAGS=-Xpreprocessor -fopenmp -I#{Formula["libomp"].opt_include}" if OS.mac?
-    args << "-DGISMO_WITH_OPENMP=ON"
+    args.push("-DOpenMP_CXX_FLAGS=-Xpreprocessor -fopenmp -I#{Formula["libomp"].opt_include}") if OS.mac?
+    args.push("-DGISMO_WITH_OPENMP=ON")
 
     target_arch =
       case Hardware.oldest_cpu
@@ -37,9 +37,9 @@ class Gismo < Formula
       when :core2 then "penryn"
       else "generic"
       end
-    args << "-DTARGET_ARCHITECTURE=#{target_arch}"
+    args.push("-DTARGET_ARCHITECTURE=#{target_arch}")
 
-    system "cmake", "-S", ".", "-B", "build", *args
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args, *args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
   end
