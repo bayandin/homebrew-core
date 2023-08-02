@@ -10,7 +10,6 @@ class Gismo < Formula
   end
 
   depends_on "cmake" => :build
-  depends_on "openblas"
   depends_on "suite-sparse"
   depends_on "superlu"
 
@@ -18,12 +17,23 @@ class Gismo < Formula
     depends_on "libomp"
   end
 
+  on_linux do
+    depends_on "openblas"
+  end
+
   def install
-    ENV.runtime_cpu_detection
+    # ENV.runtime_cpu_detection
 
     args = std_cmake_args
-    args << "-DBLA_VENDOR=OpenBLAS"
+    args << "-DBLA_VENDOR=Apple"    if OS.mac?
+    args << "-DBLA_VENDOR=OpenBLAS" if OS.linux?
+
+    superlu = Formula["superlu"]
+    args << "-DSUPERLUDIR=#{superlu.opt_prefix}"
     args << "-DGISMO_WITH_SUPERLU=ON"
+
+    umfpack = Formula["suite-sparse"]
+    args << "-DUMFPACKDIR=#{umfpack.opt_prefix}"
     args << "-DGISMO_WITH_UMFPACK=ON"
 
     if OS.mac?
