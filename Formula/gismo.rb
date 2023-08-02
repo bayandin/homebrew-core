@@ -36,13 +36,11 @@ class Gismo < Formula
     end
     args << "-DGISMO_WITH_OPENMP=ON"
 
-    args << case Hardware.oldest_cpu
-    when :arm_vortex_tempest
-      "-DTARGET_ARCHITECTURE=apple-m1"
-    when :core2
-      "-DTARGET_ARCHITECTURE=penryn"
-    else
-      "-DTARGET_ARCHITECTURE=" << Hardware.oldest_cpu.upcase.to_s
+    if OS.mac?
+      args << "-DTARGET_ARCHITECTURE=apple-m1" if Hardware::CPU.arm?
+      args << "-DTARGET_ARCHITECTURE=penryn"   if Hardware::CPU.intel?
+    elsif OS.linux?
+      args << "-DTARGET_ARCHITECTURE=penryn"   if Hardware::CPU.intel?
     end
 
     system "cmake", "-S", ".", "-B", "build", *args
