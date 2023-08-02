@@ -7,8 +7,6 @@ class Gismo < Formula
 
   head do
     url "https://github.com/gismo/gismo.git", branch: "stable"
-
-    depends_on "cmake" => :build
   end
 
   depends_on "cmake" => :build
