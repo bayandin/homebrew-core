@@ -1,11 +1,10 @@
 class Zookeeper < Formula
   desc "Centralized server for distributed coordination of services"
   homepage "https://zookeeper.apache.org/"
-  url "https://www.apache.org/dyn/closer.lua?path=zookeeper/zookeeper-3.8.1/apache-zookeeper-3.8.1.tar.gz"
-  mirror "https://archive.apache.org/dist/zookeeper/zookeeper-3.8.1/apache-zookeeper-3.8.1.tar.gz"
-  sha256 "ccc16850c8ab2553583583234d11c813061b5ea5f3b8ff1d740cde6c1fd1e219"
+  url "https://www.apache.org/dyn/closer.lua?path=zookeeper/zookeeper-3.9.0/apache-zookeeper-3.9.0.tar.gz"
+  mirror "https://archive.apache.org/dist/zookeeper/zookeeper-3.9.0/apache-zookeeper-3.9.0.tar.gz"
+  sha256 "c7af07e7411c798398bb8cd50f47780d8e014831666c41df6ec6540c143c0da2"
   license "Apache-2.0"
-  revision 1
   head "https://gitbox.apache.org/repos/asf/zookeeper.git", branch: "master"
 
   bottle do
@@ -29,7 +28,7 @@ class Zookeeper < Formula
   depends_on "openssl@3"
 
   resource "default_logback_xml" do
-    url "https://raw.githubusercontent.com/apache/zookeeper/release-3.8.1/conf/logback.xml"
+    url "https://raw.githubusercontent.com/apache/zookeeper/release-3.9.0/conf/logback.xml"
     sha256 "2fae7f51e4f92e8e3536e5f9ac193cb0f4237d194b982bb00b5c8644389c901f"
   end
 
