@@ -9,6 +9,8 @@ class Gismo < Formula
     url "https://github.com/gismo/gismo.git", branch: "stable"
   end
 
+  keg_only "we don't want all examples in install path"
+
   depends_on "cmake" => :build
   depends_on "openblas"
   depends_on "suite-sparse"
@@ -19,24 +21,25 @@ class Gismo < Formula
   end
 
   def install
-    args = []
-    args.push("-DBLA_VENDOR=OpenBLAS")
-
-    args.push("-DSUPERLUDIR=#{Formula["superlu"].opt_prefix}")
-    args.push("-DGISMO_WITH_SUPERLU=ON")
-
-    args.push("-DUMFPACKDIR=#{Formula["suite-sparse"].opt_prefix}")
-    args.push("-DGISMO_WITH_UMFPACK=ON")
-
-    args.push("-DOpenMP_CXX_FLAGS=-Xpreprocessor -fopenmp -I#{Formula["libomp"].opt_include}") if OS.mac?
-    args.push("-DGISMO_WITH_OPENMP=ON")
-
+    # Set hardware-optimized compiler flags
     target_arch =
       case Hardware.oldest_cpu
       when :arm_vortex_tempest then "apple-m1"
       else "penryn"
       end
-    args.push("-DTARGET_ARCHITECTURE=#{target_arch}")
+
+    args = %W[
+      -DBLA_VENDOR=OpenBLAS
+      -DSUPERLUDIR=#{Formula["superlu"].opt_prefix}
+      -DGISMO_WITH_SUPERLU=ON
+      -DUMFPACKDIR=#{Formula["suite-sparse"].opt_prefix}
+      -DGISMO_WITH_UMFPACK=ON
+      -DGISMO_WITH_OPENMP=ON
+      -DTARGET_ARCHITECTURE=#{target_arch}
+    ]
+
+    # Tweak clang to compile OpenMP parallelized source code
+    args.push("-DOpenMP_CXX_FLAGS=-Xpreprocessor -fopenmp -I#{Formula["libomp"].opt_include}") if OS.mac?
 
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args, *args
     system "cmake", "--build", "build"
