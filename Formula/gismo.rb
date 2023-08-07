@@ -39,7 +39,7 @@ class Gismo < Formula
     ]
 
     # Tweak clang to compile OpenMP parallelized source code
-    args.push("-DOpenMP_CXX_FLAGS=-Xpreprocessor -fopenmp -I#{Formula["libomp"].opt_include}") if OS.mac?
+    args << "-DOpenMP_CXX_FLAGS=-Xpreprocessor -fopenmp -I#{Formula["libomp"].opt_include}" if OS.mac?
 
     system "cmake", "-S", ".", "-B", "build", *std_cmake_args, *args
     system "cmake", "--build", "build"
