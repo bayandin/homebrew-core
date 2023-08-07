@@ -9,8 +9,6 @@ class Gismo < Formula
     url "https://github.com/gismo/gismo.git", branch: "stable"
   end
 
-  keg_only "we don't want all examples in install path"
-
   depends_on "cmake" => :build
   depends_on "openblas"
   depends_on "suite-sparse"
@@ -29,6 +27,7 @@ class Gismo < Formula
       end
 
     args = %W[
+      -DGISMO_BUILD_EXAMPLES=OFF
       -DBLA_VENDOR=OpenBLAS
       -DSUPERLUDIR=#{Formula["superlu"].opt_prefix}
       -DGISMO_WITH_SUPERLU=ON
