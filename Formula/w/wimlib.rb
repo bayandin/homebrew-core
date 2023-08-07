@@ -1,8 +1,8 @@
 class Wimlib < Formula
   desc "Library to create, extract, and modify Windows Imaging files"
   homepage "https://wimlib.net/"
-  url "https://wimlib.net/downloads/wimlib-1.14.1.tar.gz"
-  sha256 "494a15375616f2e0e9ab050245c3dc3286def21ac2002dc064bcc2b187636f42"
+  url "https://wimlib.net/downloads/wimlib-1.14.2.tar.gz"
+  sha256 "1966f8727b7d09f859c8ca3cfa300809fc1c63e0bd76fe5694285a2229383fd8"
   license "GPL-3.0-or-later"
 
   livecheck do
@@ -27,16 +27,12 @@ class Wimlib < Formula
 
   def install
     # fuse requires librt, unavailable on OSX
-    args = %W[
-      --disable-debug
-      --disable-dependency-tracking
+    args = %w[
       --disable-silent-rules
-      --prefix=#{prefix}
       --without-fuse
       --without-ntfs-3g
     ]
-
-    system "./configure", *args
+    system "./configure", *std_configure_args, *args
     system "make", "install"
   end
 
