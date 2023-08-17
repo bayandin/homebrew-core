@@ -19,13 +19,6 @@ class Gismo < Formula
   end
 
   def install
-    # Set hardware-optimized compiler flags
-    target_arch =
-      case Hardware.oldest_cpu
-      when :arm_vortex_tempest then "apple-m1"
-      else "penryn"
-      end
-
     args = %W[
       -DGISMO_BUILD_EXAMPLES=OFF
       -DBLA_VENDOR=OpenBLAS
@@ -34,7 +27,7 @@ class Gismo < Formula
       -DUMFPACKDIR=#{Formula["suite-sparse"].opt_prefix}
       -DGISMO_WITH_UMFPACK=ON
       -DGISMO_WITH_OPENMP=ON
-      -DTARGET_ARCHITECTURE=#{target_arch}
+      -DTARGET_ARCHITECTURE=none
     ]
 
     # Tweak clang to compile OpenMP parallelized source code
