@@ -22,6 +22,8 @@ class Ldid < Formula
   depends_on "openssl@3"
   uses_from_macos "libxml2"
 
+  conflicts_with "ldid-procursus", because: "ldid-proucursus installs a conflicting ldid binary"
+
   def install
     ENV.append_to_cflags "-I."
     ENV.append "CXXFLAGS", "-std=c++11"
