@@ -1,9 +1,8 @@
 class OpentelemetryCpp < Formula
   desc "OpenTelemetry C++ Client"
   homepage "https://opentelemetry.io/"
-  # TODO: Check if we can use unversioned `grpc` and `protobuf` at version bump.
-  url "https://github.com/open-telemetry/opentelemetry-cpp/archive/refs/tags/v1.10.0.tar.gz"
-  sha256 "19e8ade04a674c8cf7f0dc6da1f7b0583a27d2cf4dbc03df87894a16a4547834"
+  url "https://github.com/open-telemetry/opentelemetry-cpp/archive/refs/tags/v1.11.0.tar.gz"
+  sha256 "f30cd88bf898a5726d245eba882b8e81012021eb00df34109f4dfb203f005cea"
   license "Apache-2.0"
   head "https://github.com/open-telemetry/opentelemetry-cpp.git", branch: "main"
 
@@ -18,11 +17,12 @@ class OpentelemetryCpp < Formula
   end
 
   depends_on "cmake" => :build
+  depends_on "abseil"
   depends_on "boost"
-  depends_on "grpc@1.54"
+  depends_on "grpc"
   depends_on "nlohmann-json"
   depends_on "prometheus-cpp"
-  depends_on "protobuf@21"
+  depends_on "protobuf"
   uses_from_macos "curl"
 
   def install
@@ -34,10 +34,10 @@ class OpentelemetryCpp < Formula
                     "-DWITH_ELASTICSEARCH=ON",
                     "-DWITH_EXAMPLES=OFF",
                     "-DWITH_JAEGER=OFF", # deprecated, needs older `thrift`
-                    "-DWITH_LOGS_PREVIEW=ON",
                     "-DWITH_METRICS_PREVIEW=ON",
                     "-DWITH_OTLP_GRPC=ON",
                     "-DWITH_OTLP_HTTP=ON",
+                    "-DWITH_ABSEIL=ON",
                     "-DWITH_PROMETHEUS=ON",
                     *std_cmake_args
     system "cmake", "--build", "build"
@@ -72,10 +72,9 @@ class OpentelemetryCpp < Formula
         auto scoped_span = trace_api::Scope(tracer->StartSpan("test"));
       }
     EOS
-    # Manual `protobuf` include can be removed when we depend on unversioned protobuf.
     system ENV.cxx, "test.cc", "-std=c++17",
+                    "-DHAVE_ABSEIL",
                     "-I#{include}", "-L#{lib}",
-                    "-I#{Formula["protobuf@21"].opt_include}",
                     "-lopentelemetry_resources",
                     "-lopentelemetry_exporter_ostream_span",
                     "-lopentelemetry_trace",
