@@ -1,8 +1,8 @@
 class Scipy < Formula
   desc "Software for mathematics, science, and engineering"
   homepage "https://www.scipy.org"
-  url "https://files.pythonhosted.org/packages/a6/98/fceb84466a74b8fe74ce2dcc3a0a89cb7b4a689d4775e0fb4c95f335ef6a/scipy-1.11.1.tar.gz"
-  sha256 "fb5b492fa035334fd249f0973cc79ecad8b09c604b42a127a677b45a9a3d4289"
+  url "https://files.pythonhosted.org/packages/9c/ef/87a5565907645998d7c62e76b84b0ca9f0b7c25cd433f5617a968051cec3/scipy-1.11.2.tar.gz"
+  sha256 "b29318a5e39bd200ca4381d80b065cdf3076c7d7281c5e36569e99273867f61d"
   license "BSD-3-Clause"
   head "https://github.com/scipy/scipy.git", branch: "main"
 
@@ -17,13 +17,17 @@ class Scipy < Formula
   end
 
   depends_on "libcython" => :build
+  depends_on "meson" => :build
+  depends_on "meson-python" => :build
+  depends_on "ninja" => :build
+  depends_on "pkg-config" => :build
   depends_on "pythran" => :build
-  depends_on "swig" => :build
   depends_on "gcc" # for gfortran
   depends_on "numpy"
   depends_on "openblas"
   depends_on "pybind11"
   depends_on "python@3.11"
+  depends_on "xsimd"
 
   cxxstdlib_check :skip
 
@@ -51,13 +55,13 @@ class Scipy < Formula
     Pathname("site.cfg").write config
 
     site_packages = Language::Python.site_packages(python3)
+    ENV.prepend_path "PATH", Formula["libcython"].opt_libexec/"bin"
     ENV.prepend_path "PYTHONPATH", Formula["libcython"].opt_libexec/site_packages
     ENV.prepend_path "PYTHONPATH", Formula["pythran"].opt_libexec/site_packages
     ENV.prepend_path "PYTHONPATH", Formula["numpy"].opt_prefix/site_packages
     ENV.prepend_create_path "PYTHONPATH", site_packages
 
-    system python3, "setup.py", "build", "--fcompiler=gfortran", "--parallel=#{ENV.make_jobs}"
-    system python3, *Language::Python.setup_install_args(prefix, python3)
+    system python3, "-m", "pip", "install", *std_pip_args, "."
   end
 
   # cleanup leftover .pyc files from previous installs which can cause problems
