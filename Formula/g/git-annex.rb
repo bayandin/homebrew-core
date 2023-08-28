@@ -1,8 +1,8 @@
 class GitAnnex < Formula
   desc "Manage files with git without checking in file contents"
   homepage "https://git-annex.branchable.com/"
-  url "https://hackage.haskell.org/package/git-annex-10.20230802/git-annex-10.20230802.tar.gz"
-  sha256 "c7e89ced9dcb9516d924fe7bc4a41fead795a5538939c7ef19b0fbf3f8607217"
+  url "https://hackage.haskell.org/package/git-annex-10.20230828/git-annex-10.20230828.tar.gz"
+  sha256 "0b3469d932f0d8f133d79b3b8efc770d95e7db74f99c14679b494bdec840665d"
   license all_of: ["AGPL-3.0-or-later", "BSD-2-Clause", "BSD-3-Clause",
                    "GPL-2.0-only", "GPL-3.0-or-later", "MIT"]
   head "git://git-annex.branchable.com/", branch: "master"
@@ -22,26 +22,7 @@ class GitAnnex < Formula
   depends_on "pkg-config" => :build
   depends_on "libmagic"
 
-  resource "bloomfilter" do
-    url "https://hackage.haskell.org/package/bloomfilter-2.0.1.0/bloomfilter-2.0.1.0.tar.gz"
-    sha256 "6c5e0d357d5d39efe97ae2776e8fb533fa50c1c05397c7b85020b0f098ad790f"
-
-    # Fix build with GHC >= 9.2
-    # PR ref: https://github.com/bos/bloomfilter/pull/20
-    patch do
-      url "https://github.com/bos/bloomfilter/commit/fb79b39c44404fd791a3bed973e9d844fb084f1e.patch?full_index=1"
-      sha256 "c91c45fbdeb92f9dcb9b55412d14603b4e480139f6638e8b6ed651acd92409f3"
-    end
-  end
-
   def install
-    # Add workarounds to build with GHC >= 9.2
-    (buildpath/"homebrew/bloomfilter").install resource("bloomfilter")
-    (buildpath/"cabal.project.local").write <<~EOS
-      packages: ./*.cabal
-                homebrew/bloomfilter/
-    EOS
-
     system "cabal", "v2-update"
     system "cabal", "v2-install", *std_cabal_v2_args, "--flags=+S3"
     bin.install_symlink "git-annex" => "git-annex-shell"
