@@ -21,13 +21,17 @@ class Coder < Formula
     ldflags = %W[
       -s -w
       -X github.com/coder/coder/v2/buildinfo.tag=#{version}
+      -X github.com/coder/coder/v2/buildinfo.agpl=true
     ]
-    system "go", "build", *std_go_args(ldflags: ldflags), "./cmd/coder"
+    system "go", "build", *std_go_args(ldflags: ldflags), "-tags", "slim", "./cmd/coder"
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/coder version")
+    version_output = shell_output("#{bin}/coder version")
+    assert_match version.to_s, version_output
+    assert_match "AGPL", version_output
+    assert_match "Slim build", version_output
+
     assert_match "You are not logged in", shell_output("#{bin}/coder netcheck 2>&1", 1)
-    assert_match "postgres://", shell_output("#{bin}/coder server postgres-builtin-url")
   end
 end
