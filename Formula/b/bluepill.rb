@@ -7,13 +7,12 @@ class Bluepill < Formula
   license "BSD-2-Clause"
   head "https://github.com/MobileNativeFoundation/bluepill.git", branch: "master"
 
-  # Typically the preceding `v` is optional in livecheck regexes but we need it
-  # to be required here to omit older versions that break version comparison
-  # (e.g., 9.0.0). Note: We don't use the `GithubLatest` strategy here because
-  # the "latest" version is sometimes incorrect.
+  # There can be a notable gap between when a version is tagged and a
+  # corresponding release is created, so we check the "latest" release instead
+  # of the Git tags.
   livecheck do
     url :stable
-    regex(/^v(\d+(?:\.\d+)+)$/i)
+    strategy :github_latest
   end
 
   bottle do
