@@ -29,6 +29,8 @@ class Dust < Formula
     bash_completion.install "completions/dust.bash"
     fish_completion.install "completions/dust.fish"
     zsh_completion.install "completions/_dust"
+
+    man1.install "man-page/dust.1"
   end
 
   test do
