@@ -1,8 +1,8 @@
 class GrafanaAgent < Formula
   desc "Exporter for Prometheus Metrics, Loki Logs, and Tempo Traces"
   homepage "https://grafana.com/docs/agent/"
-  url "https://github.com/grafana/agent/archive/refs/tags/v0.35.4.tar.gz"
-  sha256 "4847360e87bb2c9088f4b629ccfbaa84e424f23fa3442a55f73fc598a779e503"
+  url "https://github.com/grafana/agent/archive/refs/tags/v0.36.0.tar.gz"
+  sha256 "d5725005f2b5ef99cf9a986254fdcdb308b0497f69373090cff2f04557a5fa2a"
   license "Apache-2.0"
 
   bottle do
@@ -22,6 +22,10 @@ class GrafanaAgent < Formula
   on_linux do
     depends_on "systemd" => :build
   end
+
+  # go 1.21.0 build patch, https://github.com/grafana/agent/pull/4946
+  # remove in next release
+  patch :DATA
 
   def install
     ldflags = %W[
@@ -88,3 +92,33 @@ class GrafanaAgent < Formula
     assert_match "agent_build_info", output
   end
 end
+
+__END__
+diff --git a/go.mod b/go.mod
+index 2d8d826..e8048d4 100644
+--- a/go.mod
++++ b/go.mod
+@@ -149,7 +149,7 @@ require (
+ 	github.com/prometheus/prometheus v1.99.0
+ 	github.com/prometheus/snmp_exporter v0.22.1-0.20230623130038-562ae9055ce3
+ 	github.com/prometheus/statsd_exporter v0.22.8
+-	github.com/pyroscope-io/godeltaprof v0.1.1
++	github.com/pyroscope-io/godeltaprof v0.1.2
+ 	github.com/richardartoul/molecule v1.0.1-0.20221107223329-32cfee06a052
+ 	github.com/rs/cors v1.9.0
+ 	github.com/shirou/gopsutil/v3 v3.23.5
+diff --git a/go.sum b/go.sum
+index 0a16dee..a8a4c27 100644
+--- a/go.sum
++++ b/go.sum
+@@ -3047,8 +3047,8 @@ github.com/prometheus/statsd_exporter v0.22.7/go.mod h1:N/TevpjkIh9ccs6nuzY3jQn9
+ github.com/prometheus/statsd_exporter v0.22.8 h1:Qo2D9ZzaQG+id9i5NYNGmbf1aa/KxKbB9aKfMS+Yib0=
+ github.com/prometheus/statsd_exporter v0.22.8/go.mod h1:/DzwbTEaFTE0Ojz5PqcSk6+PFHOPWGxdXVr6yC8eFOM=
+ github.com/prometheus/tsdb v0.7.1/go.mod h1:qhTCs0VvXwvX/y3TZrWD7rabWM+ijKTux40TwIPHuXU=
+-github.com/pyroscope-io/godeltaprof v0.1.1 h1:+Mmi+b9gR3s/qufuQSxOBjyXZR1fmvS/C12Q73PIPvw=
+-github.com/pyroscope-io/godeltaprof v0.1.1/go.mod h1:psMITXp90+8pFenXkKIpNhrfmI9saQnPbba27VIaiQE=
++github.com/pyroscope-io/godeltaprof v0.1.2 h1:MdlEmYELd5w+lvIzmZvXGNMVzW2Qc9jDMuJaPOR75g4=
++github.com/pyroscope-io/godeltaprof v0.1.2/go.mod h1:psMITXp90+8pFenXkKIpNhrfmI9saQnPbba27VIaiQE=
+ github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
+ github.com/rcrowley/go-metrics v0.0.0-20200313005456-10cdbea86bc0/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
+ github.com/rcrowley/go-metrics v0.0.0-20201227073835-cf1acfcdf475 h1:N/ElC8H3+5XpJzTSTfLsJV/mx9Q9g7kxmchpfZyxgzM=
