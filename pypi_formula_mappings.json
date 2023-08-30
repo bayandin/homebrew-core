@@ -5,6 +5,9 @@
   "airshare": {
     "exclude_packages": ["certifi"]
   },
+  "all-repos": {
+    "exclude_packages": ["packaging"]
+  },
   "aiven-client": {
     "exclude_packages": ["certifi"]
   },
