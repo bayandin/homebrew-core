@@ -1,8 +1,8 @@
 class LcdfTypetools < Formula
   desc "Manipulate OpenType and multiple-master fonts"
   homepage "https://www.lcdf.org/type/"
-  url "https://www.lcdf.org/type/lcdf-typetools-2.108.tar.gz"
-  sha256 "fb09bf45d98fa9ab104687e58d6e8a6727c53937e451603662338a490cbbcb26"
+  url "https://www.lcdf.org/type/lcdf-typetools-2.110.tar.gz"
+  sha256 "517f9ee879208679d3224a14d5e6eb20598fc648d5c3562708083d003088a934"
   license "GPL-2.0-or-later"
   head "https://github.com/kohler/lcdf-typetools.git", branch: "master"
 
