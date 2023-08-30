@@ -22,6 +22,13 @@ class Mrboom < Formula
   depends_on "sdl2"
   depends_on "sdl2_mixer"
 
+  # Remove in next release
+  # Fixes: common.cpp:115:10: fatal error: 'SDL_mixer.h' file not found
+  patch do
+    url "https://github.com/Javanaise/mrboom-libretro/commit/d483c2dc308ddaf831fb81bff965a1bca266b7c8.patch?full_index=1"
+    sha256 "573f11c68b97190398f7f0bcb3338c6f387bf4be39e4fbd3896278b611d0cf59"
+  end
+
   def install
     system "make", "mrboom", "LIBSDL2=1"
     system "make", "install", "PREFIX=#{prefix}", "MANDIR=share/man/man6"
