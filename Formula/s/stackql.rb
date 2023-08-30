@@ -2,8 +2,8 @@ class Stackql < Formula
   desc "SQL interface for arbitrary resources with full CRUD support"
   homepage "https://stackql.io/"
   url "https://github.com/stackql/stackql.git",
-      tag:      "v0.5.405",
-      revision: "74f6f365c0d8372c66fb5070d4309eead7d57709"
+      tag:      "v0.5.414",
+      revision: "38b107f84de84de8025c7c95d9fd2cc5401fb636"
   license "MIT"
 
   livecheck do
