@@ -1,10 +1,10 @@
 class Qthreads < Formula
   desc "Lightweight locality-aware user-level threading runtime"
-  homepage "https://github.com/Qthreads/qthreads"
-  url "https://github.com/Qthreads/qthreads/archive/refs/tags/1.18.tar.gz"
-  sha256 "c2d1ba85533dc980ff61e422c9b7531417e8884c3a1a701d59229c0e6956594c"
+  homepage "https://www.sandia.gov/qthreads/"
+  url "https://github.com/sandialabs/qthreads/archive/refs/tags/1.19.tar.gz"
+  sha256 "2790382991c0755d752354b189aa019076c80ebed7f4c5c045d14bd57c9eb7ac"
   license "BSD-3-Clause"
-  head "https://github.com/Qthreads/qthreads.git", branch: "main"
+  head "https://github.com/sandialabs/qthreads.git", branch: "main"
 
   bottle do
     sha256 cellar: :any,                 arm64_ventura:  "5d9d7bd839e5ea29c6e9907907d153388c37f6011242c241ca650f19a6b75e73"
