@@ -1,8 +1,8 @@
 class Udp2rawMultiplatform < Formula
   desc "Multi-platform(cross-platform) version of udp2raw-tunnel client"
   homepage "https://github.com/wangyu-/udp2raw-multiplatform"
-  url "https://github.com/wangyu-/udp2raw-multiplatform/archive/refs/tags/20210111.0.tar.gz"
-  sha256 "712ad3c79b6ef5bf106c615823d0b0b3865d1c957f9838cf05c23b7ac7024438"
+  url "https://github.com/wangyu-/udp2raw-multiplatform/archive/refs/tags/20230206.0.tar.gz"
+  sha256 "a4c2aece9e302a7895319efe940e5693522bafe9ae35b3f8088f091b35599e8a"
   license "MIT"
 
   depends_on "libnet"
