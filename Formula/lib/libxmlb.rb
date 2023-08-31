@@ -8,6 +8,16 @@ class Libxmlb < Formula
   license "LGPL-2.1-or-later"
   head "https://github.com/hughsie/libxmlb.git", branch: "main"
 
+  bottle do
+    sha256 cellar: :any, arm64_ventura:  "9254cc28ae1f707d85af4da33112ec899d9ea423e30f01d11351215046477caa"
+    sha256 cellar: :any, arm64_monterey: "2b41e04835d1b221e92c2457101e82c985cf79ffedd71292600af576263ab3e9"
+    sha256 cellar: :any, arm64_big_sur:  "83d06ead9fd0f40f8633aeaf94768cdf22a4ae28c947a2523d93cb38511d0047"
+    sha256 cellar: :any, ventura:        "5fb074755b8635f7ca54797438facf12276867b181e534e667f6ccae8867d39a"
+    sha256 cellar: :any, monterey:       "8a7c22844f0e5fe14da453f61fbf56cdfbcac8b6f59a4e84759a57445d9bf95d"
+    sha256 cellar: :any, big_sur:        "3326934369e5785e07d058f84e6722c958db07d7edb23b0b613d1a571f783879"
+    sha256               x86_64_linux:   "0cfb3670114944252092f1ae43bad42947924562771529242b4472751fbb7af5"
+  end
+
   depends_on "gi-docgen" => :build
   depends_on "gobject-introspection" => :build
   depends_on "meson" => :build
