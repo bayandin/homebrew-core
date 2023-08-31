@@ -19,8 +19,6 @@ class RustAnalyzer < Formula
 
   depends_on "rust" => :build
 
-  conflicts_with "rust", because: "both install `rust-analyzer` binary"
-
   def install
     cd "crates/rust-analyzer" do
       system "cargo", "install", "--bin", "rust-analyzer", *std_cargo_args
