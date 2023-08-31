@@ -5,6 +5,16 @@ class MesonPython < Formula
   sha256 "80bc9de898acd36eb4b945afaaf7a2b4ca00189c51870d535e329761910cf8ea"
   license "MIT"
 
+  bottle do
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "c64717b6f255a22cd72f4cdeab9b4788ae8174abbfbe4433e3b5a7c7ae8aa777"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "ef82a634a31954055f505f28a9beeb8b21224f9b63419b4cbf43dd4f9b0f5e68"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "55ad56f202f48636e71d5bbfb5932822f8a4b1271c0e3a7cb39ab3073720d4c6"
+    sha256 cellar: :any_skip_relocation, ventura:        "fa2af8f88ea5f2336f84fc6121265eb7acb116a34035baf9f95d865375274223"
+    sha256 cellar: :any_skip_relocation, monterey:       "14dfe314a50b1c48f231e4dfbe056ae26f8b6822557a9f4c6e998dd93d8d863d"
+    sha256 cellar: :any_skip_relocation, big_sur:        "6f38af2af36b547eff2d722982f9dc6ea8e628b3f33aba99a9101fe49c96f141"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5c57cf466d0891eae880aa5c3b1099f255664b2f01ec3d56eaacf73ec9a9ad10"
+  end
+
   depends_on "python-flit-core" => :build
   depends_on "python@3.10" => [:build, :test]
   depends_on "python@3.11" => [:build, :test]
