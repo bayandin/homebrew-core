@@ -13,9 +13,15 @@ class Fades < Formula
 
   depends_on "python@3.11"
 
+  def python3
+    which("python3.11")
+  end
+
   def install
-    python3 = "python3.11"
-    system python3, *Language::Python.setup_install_args(prefix, python3)
+    system python3, "-m", "pip", "install", *std_pip_args, "."
+
+    man1.install buildpath/"man/fades.1"
+    rm_f bin/"fades.cmd" # remove windows cmd file
   end
 
   test do
