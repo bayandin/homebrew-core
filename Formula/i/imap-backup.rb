@@ -11,13 +11,13 @@ class ImapBackup < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "d7769c7e853da8fd246b049a7d6a1623d87a0ef8cce01ae508f43f07fa06b13f"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "d7769c7e853da8fd246b049a7d6a1623d87a0ef8cce01ae508f43f07fa06b13f"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "d7769c7e853da8fd246b049a7d6a1623d87a0ef8cce01ae508f43f07fa06b13f"
-    sha256 cellar: :any_skip_relocation, ventura:        "d7769c7e853da8fd246b049a7d6a1623d87a0ef8cce01ae508f43f07fa06b13f"
-    sha256 cellar: :any_skip_relocation, monterey:       "d7769c7e853da8fd246b049a7d6a1623d87a0ef8cce01ae508f43f07fa06b13f"
-    sha256 cellar: :any_skip_relocation, big_sur:        "d7769c7e853da8fd246b049a7d6a1623d87a0ef8cce01ae508f43f07fa06b13f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "413eeafc25905a5231ba97d73a72fd49a177d2214c7f5b91b02f8d179be7431b"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "ab6626cab9bd53f94bdb8ac115f141a99ce3ff63da1adaaf8dd4edac0f62eb89"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "ab6626cab9bd53f94bdb8ac115f141a99ce3ff63da1adaaf8dd4edac0f62eb89"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "ab6626cab9bd53f94bdb8ac115f141a99ce3ff63da1adaaf8dd4edac0f62eb89"
+    sha256 cellar: :any_skip_relocation, ventura:        "ab6626cab9bd53f94bdb8ac115f141a99ce3ff63da1adaaf8dd4edac0f62eb89"
+    sha256 cellar: :any_skip_relocation, monterey:       "ab6626cab9bd53f94bdb8ac115f141a99ce3ff63da1adaaf8dd4edac0f62eb89"
+    sha256 cellar: :any_skip_relocation, big_sur:        "ab6626cab9bd53f94bdb8ac115f141a99ce3ff63da1adaaf8dd4edac0f62eb89"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "e246530e133c7b5161af4872f32491f084a4ed01c070fd6516fbaaf74bedb609"
   end
 
   uses_from_macos "ruby", since: :catalina
