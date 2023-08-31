@@ -72,7 +72,7 @@
   },
   "aws-google-auth": {
     "exclude_packages": [
-      "certifi", "cffi", "importlib-metadata", "jaraco-classes", "jeepney", "keyring",
+      "certifi", "cffi", "importlib-metadata", "jaraco-classes", "jeepney", "keyring", "lxml",
       "more-itertools", "pillow", "pycparser", "secretstorage", "six", "tabulate", "zipp"
     ]
   },
