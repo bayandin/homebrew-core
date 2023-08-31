@@ -1,8 +1,8 @@
 class Grype < Formula
   desc "Vulnerability scanner for container images and filesystems"
   homepage "https://github.com/anchore/grype"
-  url "https://github.com/anchore/grype/archive/refs/tags/v0.65.2.tar.gz"
-  sha256 "29d781a5f09af19f11ee9164e6f85bea4319d0a3e44e72953ee2964ed2aefc37"
+  url "https://github.com/anchore/grype/archive/refs/tags/v0.66.0.tar.gz"
+  sha256 "b0e38671975c0871f1b9a7bacba376f90ecb429973cb4b5b9cf90a3f4e072304"
   license "Apache-2.0"
   head "https://github.com/anchore/grype.git", branch: "main"
 
@@ -16,7 +16,8 @@ class Grype < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "b69d39eb352308a01344ec1d2c65bab0f22c6009c4b366012250b3999c5511c5"
   end
 
-  depends_on "go" => :build
+  # upstream bug report for building with go1.21, https://github.com/anchore/syft/issues/2066
+  depends_on "go@1.20" => :build
 
   def install
     ldflags = %W[
