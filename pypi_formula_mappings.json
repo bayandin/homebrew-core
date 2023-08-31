@@ -18,13 +18,13 @@
     "exclude_packages": ["certifi", "pygments", "pyyaml"]
   },
   "ansible": {
+    "exclude_packages": ["certifi", "cffi", "cryptography", "lxml", "markupsafe", "pycparser", "pyyaml", "six"],
     "extra_packages": [
       "apache-libcloud", "boto3", "dnspython", "docker",
       "junos-eznc", "jxmlease", "kerberos", "ntc-templates", "openshift",
       "passlib", "pexpect", "proxmoxer", "pysphere3", "python-consul",
       "python-neutronclient", "pywinrm", "requests-credssp", "shade", "zabbix-api"
-    ],
-    "exclude_packages": ["certifi", "cffi", "cryptography", "pycparser", "PyYAML", "six"]
+    ]
   },
   "ansible@2.9": {
     "extra_packages": [
