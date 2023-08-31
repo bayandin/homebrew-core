@@ -28,6 +28,10 @@ class BtrfsProgs < Formula
   depends_on "zlib"
   depends_on "zstd"
 
+  def python3
+    which("python3.11")
+  end
+
   def install
     system "./configure", "--disable-python", *std_configure_args
     # Override `udevdir` since Homebrew's `pkg-config udev --variable=udevdir` output
@@ -37,8 +41,7 @@ class BtrfsProgs < Formula
 
     # We don't use the make target `install_python` due to Homebrew's prefix scheme patch
     cd "libbtrfsutil/python" do
-      python3 = "python3.11"
-      system python3, *Language::Python.setup_install_args(prefix, python3)
+      system python3, "-m", "pip", "install", *std_pip_args, "."
     end
   end
 
@@ -51,6 +54,6 @@ class BtrfsProgs < Formula
     output = shell_output("#{bin}/btrfs filesystem show #{device}")
     assert_match "Total devices 1 FS bytes used 144.00KiB", output
 
-    system "python3.11", "-c", "import btrfsutil"
+    system python3, "-c", "import btrfsutil"
   end
 end
