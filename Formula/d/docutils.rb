@@ -11,9 +11,12 @@ class Docutils < Formula
 
   depends_on "python@3.11"
 
+  def python3
+    which("python3.11")
+  end
+
   def install
-    python3 = "python3.11"
-    system python3, *Language::Python.setup_install_args(prefix, python3)
+    system python3, "-m", "pip", "install", *std_pip_args, "."
 
     bin.glob("*.py") do |f|
       bin.install_symlink f => f.basename(".py")
