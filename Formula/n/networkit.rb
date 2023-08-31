@@ -28,7 +28,7 @@ class Networkit < Formula
   depends_on "scipy"
 
   def python3
-    "python3.11"
+    which("python3.11")
   end
 
   def install
@@ -43,7 +43,7 @@ class Networkit < Formula
                                              "--external-tlx=#{Formula["tlx"].opt_prefix}",
                                              "--rpath=#{loader_path};#{extra_rpath}"
 
-    system python3, *Language::Python.setup_install_args(prefix, python3)
+    system python3, "-m", "pip", "install", *std_pip_args, "."
   end
 
   test do
