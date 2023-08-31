@@ -1,6 +1,4 @@
 class PythonBuild < Formula
-  include Language::Python::Virtualenv
-
   desc "Simple, correct PEP 517 build frontend"
   homepage "https://github.com/pypa/build"
   url "https://files.pythonhosted.org/packages/de/1c/fb62f81952f0e74c3fbf411261d1adbdd2d615c89a24b42d0fe44eb4bcf3/build-0.10.0.tar.gz"
@@ -18,25 +16,24 @@ class PythonBuild < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "b3d0881beff7e8b537ca1d3b1cbe63fcbf334234809cbc6ffb92d1afc19cbc82"
   end
 
+  depends_on "python-flit-core" => :build
+  depends_on "python-packaging"
+  depends_on "python-pyproject-hooks"
   depends_on "python@3.11"
 
-  resource "packaging" do
-    url "https://files.pythonhosted.org/packages/47/d5/aca8ff6f49aa5565df1c826e7bf5e85a6df852ee063600c1efa5b932968c/packaging-23.0.tar.gz"
-    sha256 "b6ad297f8907de0fa2fe1ccbd26fdaf387f5f47c7275fedf8cce89f99446cf97"
-  end
-
-  resource "pyproject_hooks" do
-    url "https://files.pythonhosted.org/packages/25/c1/374304b8407d3818f7025457b7366c8e07768377ce12edfe2aa58aa0f64c/pyproject_hooks-1.0.0.tar.gz"
-    sha256 "f271b298b97f5955d53fb12b72c1fb1948c22c1a6b70b315c54cedaca0264ef5"
+  def python3
+    which("python3.11")
   end
 
   def install
-    virtualenv_install_with_resources
+    system python3, "-m", "pip", "install", *std_pip_args, "."
   end
 
   test do
+    system python3, "-c", "import build"
+
     stable.stage do
-      system "pyproject-build"
+      system bin/"pyproject-build"
       assert_predicate Pathname.pwd/"dist/build-#{stable.version}.tar.gz", :exist?
       assert_predicate Pathname.pwd/"dist/build-#{stable.version}-py3-none-any.whl", :exist?
     end
