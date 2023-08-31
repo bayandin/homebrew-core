@@ -104,7 +104,7 @@
     "exclude_packages": ["certifi", "docutils", "six"]
   },
   "bandcamp-dl": {
-    "exclude_packages": ["certifi", "six"]
+    "exclude_packages": ["certifi", "lxml", "six"]
   },
   "bandit": {
     "exclude_packages": ["PyYAML", "pygments"]
