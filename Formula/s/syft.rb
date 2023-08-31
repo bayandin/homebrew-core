@@ -1,8 +1,8 @@
 class Syft < Formula
   desc "CLI for generating a Software Bill of Materials from container images"
   homepage "https://github.com/anchore/syft"
-  url "https://github.com/anchore/syft/archive/refs/tags/v0.88.0.tar.gz"
-  sha256 "37b2c4a3ba555351ffe164293d6f2fdaebf2dbeab69f6ffe8e18b85d4dcebc9e"
+  url "https://github.com/anchore/syft/archive/refs/tags/v0.89.0.tar.gz"
+  sha256 "e8b4bf1481f3101adb2881f35f95528cceb58470f1c568c7c05c2864031dfdaa"
   license "Apache-2.0"
   head "https://github.com/anchore/syft.git", branch: "main"
 
@@ -27,9 +27,9 @@ class Syft < Formula
   def install
     ldflags = %W[
       -s -w
-      -X github.com/anchore/syft/internal/version.version=#{version}
-      -X github.com/anchore/syft/internal/version.gitCommit=#{tap.user}
-      -X github.com/anchore/syft/internal/version.buildDate=#{time.iso8601}
+      -X main.version=#{version}
+      -X main.gitCommit=#{tap.user}
+      -X main.buildDate=#{time.iso8601}
     ]
 
     # Building for OSX with -extldflags "-static" results in the error:
