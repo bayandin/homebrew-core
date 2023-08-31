@@ -26,7 +26,7 @@ class I2cTools < Formula
   def install
     system "make", "install", "PREFIX=#{prefix}", "EXTRA=eeprog"
     cd "py-smbus" do
-      system python3, *Language::Python.setup_install_args(prefix, python3)
+      system python3, "-m", "pip", "install", *std_pip_args, "."
     end
   end
 
