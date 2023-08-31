@@ -527,6 +527,10 @@
   "mathlibtools": {
     "exclude_packages": ["certifi", "cffi", "cryptography", "pycparser", "PyYAML"]
   },
+  "maturin": {
+    "exclude_packages": ["typing-extensions"],
+    "extra_packages": ["semantic-version", "setuptools-rust", "tomli"]
+  },
   "meson-python": {
     "exclude_packages": ["meson", "packaging"],
     "extra_packages": ["tomli"]
