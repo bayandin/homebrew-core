@@ -3,8 +3,8 @@ class Platformio < Formula
 
   desc "Your Gateway to Embedded Software Development Excellence"
   homepage "https://platformio.org/"
-  url "https://files.pythonhosted.org/packages/fa/f0/32f8e9dc3cfb418af074f06ee419ab5f490df01141196d0f20d14b5037c5/platformio-6.1.10.tar.gz"
-  sha256 "046ad5bf0f723a98f0fc98cf6ef71cfd57dd85dc6c547af0e801fbc952f8fe58"
+  url "https://files.pythonhosted.org/packages/85/9b/37452c9b7e99638c9d761c7864a463e4721ce7206fb526174813ffe6a949/platformio-6.1.11.tar.gz"
+  sha256 "1977201887cd11487adf1babf17a28f45f6dbbec8cbc5e3cc144cb43b320a0d0"
   license "Apache-2.0"
   head "https://github.com/platformio/platformio-core.git", branch: "develop"
 
@@ -28,8 +28,8 @@ class Platformio < Formula
   end
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/28/99/2dfd53fd55ce9838e6ff2d4dac20ce58263798bd1a0dbe18b3a9af3fcfce/anyio-3.7.1.tar.gz"
-    sha256 "44a3c9aba0f5defa43261a8b3efb97891f2bd7d804e0e1f56419befa1adfc780"
+    url "https://files.pythonhosted.org/packages/74/17/5075225ee1abbb93cd7fc30a2d343c6a3f5f71cf388f14768a7a38256581/anyio-4.0.0.tar.gz"
+    sha256 "f7ed51751b2c2add651e5747c891b47e26d2a21be5d32d9311dfe9692f3e5d7a"
   end
 
   resource "bottle" do
@@ -43,8 +43,8 @@ class Platformio < Formula
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/72/bd/fedc277e7351917b6c4e0ac751853a97af261278a4c7808babafa8ef2120/click-8.1.6.tar.gz"
-    sha256 "48ee849951919527a045bfe3bf7baa8a959c423134e1a5b98c05c20ba75a1cbd"
+    url "https://files.pythonhosted.org/packages/96/d3/f04c7bfcf5c1862a2a5b845c6b2b360488cf47af55dfa79c98f6a6bf98b5/click-8.1.7.tar.gz"
+    sha256 "ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"
   end
 
   resource "colorama" do
@@ -98,8 +98,8 @@ class Platformio < Formula
   end
 
   resource "starlette" do
-    url "https://files.pythonhosted.org/packages/0f/62/0b59c1ed652ce7935f018ae2fc3bdab2d8a6a5675f914ed9618eb8ee70b3/starlette-0.31.0.tar.gz"
-    sha256 "7df0a3d8fa2c027d641506204ef69239d19bf9406ad2e77b319926e476ac3042"
+    url "https://files.pythonhosted.org/packages/e1/4b/fcd426d9477554d31dacb0c8069828466841b69ad26c8cfab9c5321830ec/starlette-0.31.1.tar.gz"
+    sha256 "a4dc2a3448fb059000868d7eb774dd71229261b6d49b6851e7849bec69c0a011"
   end
 
   resource "urllib3" do
