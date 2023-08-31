@@ -5,6 +5,16 @@ class PythonMarkupsafe < Formula
   sha256 "af598ed32d6ae86f1b747b82783958b1a4ab8f617b06fe68795c7f026abbdcad"
   license "BSD-3-Clause"
 
+  bottle do
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "23fb7df7e480ae29fa2765130813f0531a5ce26467a80adc062ceae107390a61"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "e87fb37ae58cb9c88427a03873ea9a8e3947dc85102adc3304d9073cc4861c19"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "ba45e541895067ade3baffbc6e408437ec9abffe8f0aad81e4cce445af45df26"
+    sha256 cellar: :any_skip_relocation, ventura:        "c68f2269d60ff7c5795f823baca722c522e034fad92591a8c6b0a46b102144a5"
+    sha256 cellar: :any_skip_relocation, monterey:       "938586a6ab469083c2bfafc7197439a8342f35541e865d2df375342559fb6194"
+    sha256 cellar: :any_skip_relocation, big_sur:        "a752771f37e5d6dda3bcc18693a3b61d4e407cefb4d534fce0f113e2f7c9f8c8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "81ec603d54ee57cdb6d26e68e4dac2598139747f2540cc032aaf59f5d937541d"
+  end
+
   depends_on "python@3.10" => [:build, :test]
   depends_on "python@3.11" => [:build, :test]
   depends_on "python@3.9" => [:build, :test]
