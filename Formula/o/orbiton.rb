@@ -6,6 +6,16 @@ class Orbiton < Formula
   license "BSD-3-Clause"
   head "https://github.com/xyproto/orbiton.git", branch: "main"
 
+  bottle do
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "cce42d3d44f9169e96b22a661a83e31320b9a74f40ef86b09d24bbb08c76834e"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "42adc1d5494be542f1cbaab358de81d99ee3ffe89f326b0725643858bf588f41"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "a3dafb870e7bed6b18f838093defa795d8ba81e4385dc7961ccdd7941efc561e"
+    sha256 cellar: :any_skip_relocation, ventura:        "e6f3ca44032831f56be2d881c96f4f984cfbdfe2958ded997988d94073898e04"
+    sha256 cellar: :any_skip_relocation, monterey:       "b6284a4e4d41b4c29a3a4ad087b4f09fd0e00f1bdf4f28c4523f5194873ac36c"
+    sha256 cellar: :any_skip_relocation, big_sur:        "98c9825dcdf426d20b634f84bab15d2466575331af1e0939e05673f61c32e485"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "12bc5130e3ac33611627e3fd5ed95631b56e04cfbeb14c7cce317c9d486b29e5"
+  end
+
   depends_on "go" => :build
 
   on_linux do
