@@ -1,9 +1,12 @@
 class CargoEdit < Formula
   desc "Utility for managing cargo dependencies from the command-line"
   homepage "https://killercup.github.io/cargo-edit/"
-  url "https://github.com/killercup/cargo-edit/archive/v0.12.1.tar.gz"
+  # TODO: check if we can use unversioned `libgit2` at version bump.
+  # See comments below for details.
+  url "https://github.com/killercup/cargo-edit/archive/refs/tags/v0.12.1.tar.gz"
   sha256 "2223107d04c17643ad3261fb2c106200df61a988daa8257ed8bffd8c0a8383ab"
   license "MIT"
+  revision 1
 
   bottle do
     sha256 cellar: :any_skip_relocation, arm64_ventura:  "f4f5ac5c34c0555d7c7fa89b210a3423850705960053a272388bcfbe57ede2f1"
@@ -18,7 +21,13 @@ class CargoEdit < Formula
   depends_on "pkg-config" => :build
   depends_on "rust" => :build
   depends_on "rustup-init" => :test
-  depends_on "libgit2"
+  # To check for `libgit2` version:
+  # 1. Search for `libgit2-sys` version at https://github.com/killercup/cargo-edit/blob/v#{version}/Cargo.lock
+  # 2. If the version suffix of `libgit2-sys` is newer than +1.6.*, then:
+  #    - Migrate to the corresponding `libgit2` formula.
+  #    - Change the `LIBGIT2_SYS_USE_PKG_CONFIG` env var below to `LIBGIT2_NO_VENDOR`.
+  #      See: https://github.com/rust-lang/git2-rs/commit/59a81cac9ada22b5ea6ca2841f5bd1229f1dd659.
+  depends_on "libgit2@1.6"
   depends_on "openssl@3"
 
   def install
@@ -32,6 +41,7 @@ class CargoEdit < Formula
     cargo_option_regex = /default\s*=\s*(\[.+?\])/m
     cargo_options = JSON.parse(cargo_toml[cargo_option_regex, 1].sub(",\n]", "]"))
     cargo_options.delete("vendored-libgit2")
+    ENV["LIBGIT2_SYS_USE_PKG_CONFIG"] = "1"
 
     # We use the `features` flags to disable vendored `libgit2` but enable all other defaults.
     # We do this since there is no way to disable a specific default feature with `cargo`.
@@ -76,7 +86,7 @@ class CargoEdit < Formula
     end
 
     [
-      Formula["libgit2"].opt_lib/shared_library("libgit2"),
+      Formula["libgit2@1.6"].opt_lib/shared_library("libgit2"),
       Formula["openssl@3"].opt_lib/shared_library("libssl"),
       Formula["openssl@3"].opt_lib/shared_library("libcrypto"),
     ].each do |library|
