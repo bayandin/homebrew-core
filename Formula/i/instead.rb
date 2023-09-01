@@ -1,10 +1,9 @@
 class Instead < Formula
   desc "Interpreter of simple text adventures"
   homepage "https://instead.hugeping.ru/"
-  url "https://github.com/instead-hub/instead/archive/3.5.0.tar.gz"
-  sha256 "28b2bda81938106393d2ca190be9d95c862189c8213e4b6dee3a913e2aae2620"
+  url "https://github.com/instead-hub/instead/archive/3.5.1.tar.gz"
+  sha256 "53380f94be7f1ec46de309d513f7fe62a1c63d607a247715d87815e83a9c7d63"
   license "MIT"
-  revision 1
 
   bottle do
     sha256 arm64_ventura:  "bd3d94207c0f3cf11525c91a066428272fe9533e4266f39bcf1fdfa9b95ed09a"
