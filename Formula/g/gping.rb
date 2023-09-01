@@ -1,9 +1,12 @@
 class Gping < Formula
   desc "Ping, but with a graph"
   homepage "https://github.com/orf/gping"
-  url "https://github.com/orf/gping/archive/gping-v1.14.0.tar.gz"
+  # TODO: check if we can use unversioned `libgit2` at version bump.
+  # See comments below for details.
+  url "https://github.com/orf/gping/archive/refs/tags/gping-v1.14.0.tar.gz"
   sha256 "8a9c11668e2de8472d551225da1390e89bfbe4a327d120e62f8f65a2270c44f0"
   license "MIT"
+  revision 1
   head "https://github.com/orf/gping.git", branch: "master"
 
   # The GitHub repository has a "latest" release but it can sometimes point to
@@ -29,7 +32,13 @@ class Gping < Formula
   depends_on "rust" => :build
 
   on_macos do
-    depends_on "libgit2"
+    # To check for `libgit2` version:
+    # 1. Search for `libgit2-sys` version at https://github.com/orf/gping/blob/gping-#{version}/Cargo.lock
+    # 2. If the version suffix of `libgit2-sys` is newer than +1.6.*, then:
+    #    - Migrate to the corresponding `libgit2` formula.
+    #    - Change the `LIBGIT2_SYS_USE_PKG_CONFIG` env var below to `LIBGIT2_NO_VENDOR`.
+    #      See: https://github.com/rust-lang/git2-rs/commit/59a81cac9ada22b5ea6ca2841f5bd1229f1dd659.
+    depends_on "libgit2@1.6"
   end
 
   on_linux do
@@ -37,6 +46,7 @@ class Gping < Formula
   end
 
   def install
+    ENV["LIBGIT2_SYS_USE_PKG_CONFIG"] = "1"
     system "cargo", "install", *std_cargo_args(path: "gping")
   end
 
@@ -68,7 +78,7 @@ class Gping < Formula
     linkage_with_libgit2 = (bin/"gping").dynamically_linked_libraries.any? do |dll|
       next false unless dll.start_with?(HOMEBREW_PREFIX.to_s)
 
-      File.realpath(dll) == (Formula["libgit2"].opt_lib/shared_library("libgit2")).realpath.to_s
+      File.realpath(dll) == (Formula["libgit2@1.6"].opt_lib/shared_library("libgit2")).realpath.to_s
     end
     assert linkage_with_libgit2, "No linkage with libgit2! Cargo is likely using a vendored version."
   end
