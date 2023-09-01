@@ -1,8 +1,8 @@
 class Deno < Formula
   desc "Secure runtime for JavaScript and TypeScript"
   homepage "https://deno.land/"
-  url "https://github.com/denoland/deno/releases/download/v1.36.3/deno_src.tar.gz"
-  sha256 "aac93b064dd5f9658184879542a9cad61f7cea599b85442563b86fd78da116d1"
+  url "https://github.com/denoland/deno/releases/download/v1.36.4/deno_src.tar.gz"
+  sha256 "6cb639ee21bc6306a321a502b12cd336f5f9be5ffa37096293b413d4b8895baf"
   license "MIT"
   head "https://github.com/denoland/deno.git", branch: "main"
 
@@ -19,6 +19,7 @@ class Deno < Formula
   depends_on "cmake" => :build
   depends_on "llvm" => :build
   depends_on "ninja" => :build
+  depends_on "protobuf" => :build
   depends_on "python@3.11" => :build
   depends_on "rust" => :build
   depends_on "sqlite" # needs `sqlite3_unlock_notify`
