@@ -12,13 +12,13 @@ class JettyRunner < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "17e72d7c303faad3cff674691d9657eeaf4a01db71087cb7d49a78eb6bd8559f"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "17e72d7c303faad3cff674691d9657eeaf4a01db71087cb7d49a78eb6bd8559f"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "17e72d7c303faad3cff674691d9657eeaf4a01db71087cb7d49a78eb6bd8559f"
-    sha256 cellar: :any_skip_relocation, ventura:        "17e72d7c303faad3cff674691d9657eeaf4a01db71087cb7d49a78eb6bd8559f"
-    sha256 cellar: :any_skip_relocation, monterey:       "17e72d7c303faad3cff674691d9657eeaf4a01db71087cb7d49a78eb6bd8559f"
-    sha256 cellar: :any_skip_relocation, big_sur:        "17e72d7c303faad3cff674691d9657eeaf4a01db71087cb7d49a78eb6bd8559f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "fcf4ff31ae4fba559f3cc6d157632a936e6c29e39be665a4521964b7cd7f3fdf"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "21f8207c7576f0469caabae4483eeddc35e3bd707f5205463cc5b42087b1faac"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "21f8207c7576f0469caabae4483eeddc35e3bd707f5205463cc5b42087b1faac"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "21f8207c7576f0469caabae4483eeddc35e3bd707f5205463cc5b42087b1faac"
+    sha256 cellar: :any_skip_relocation, ventura:        "21f8207c7576f0469caabae4483eeddc35e3bd707f5205463cc5b42087b1faac"
+    sha256 cellar: :any_skip_relocation, monterey:       "21f8207c7576f0469caabae4483eeddc35e3bd707f5205463cc5b42087b1faac"
+    sha256 cellar: :any_skip_relocation, big_sur:        "21f8207c7576f0469caabae4483eeddc35e3bd707f5205463cc5b42087b1faac"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f9196e9c3b9cc601b696dcc4dd4a73ef7184ac1403152111a384a0c00ad002e7"
   end
 
   depends_on "openjdk"
