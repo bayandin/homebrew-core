@@ -3,8 +3,8 @@ class Borgbackup < Formula
 
   desc "Deduplicating archiver with compression and authenticated encryption"
   homepage "https://borgbackup.org/"
-  url "https://files.pythonhosted.org/packages/92/b6/dfc0489b6baf5ef8d33c7aa15cf628962b4e09608b282092e39a9f75a28e/borgbackup-1.2.5.tar.gz"
-  sha256 "72580779459ba72ea7e7d2e2a2ebd4f377c403236dd0ea148606036e4b631876"
+  url "https://files.pythonhosted.org/packages/cd/a2/d4375923a8b858312e6f4593ac7f613d338394f3feb669f67d2a6269d2f9/borgbackup-1.2.6.tar.gz"
+  sha256 "b7a6f8f086039eeec79070b914f3c651ed7f3612c965374af910d277c7a2139d"
   license "BSD-3-Clause"
 
   bottle do
