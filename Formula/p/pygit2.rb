@@ -1,9 +1,11 @@
 class Pygit2 < Formula
   desc "Bindings to the libgit2 shared library"
   homepage "https://github.com/libgit2/pygit2"
+  # TODO: check if we can use unversioned `libgit2` at version bump.
   url "https://files.pythonhosted.org/packages/db/26/cd0d68706e9511ca07b10d53f42e70d4c57b3504f4a0fd675e4617ad7a60/pygit2-1.12.2.tar.gz"
   sha256 "56e85d0e66de957d599d1efb2409d39afeefd8f01009bfda0796b42a4b678358"
   license "GPL-2.0-only" => { with: "GCC-exception-2.0" }
+  revision 1
   head "https://github.com/libgit2/pygit2.git", branch: "master"
 
   bottle do
@@ -18,7 +20,9 @@ class Pygit2 < Formula
   end
 
   depends_on "cffi"
-  depends_on "libgit2"
+  # If commit https://github.com/libgit2/pygit2/commit/1473e8eb6eb59dc7521dcd5f8a4c9390e9b53223
+  # is included in the release, then `libgit2` 1.7.x can be used.
+  depends_on "libgit2@1.6"
   depends_on "python@3.11"
 
   def python3
