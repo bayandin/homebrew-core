@@ -1,9 +1,12 @@
 class CargoUdeps < Formula
   desc "Find unused dependencies in Cargo.toml"
   homepage "https://github.com/est31/cargo-udeps"
+  # TODO: check if we can use unversioned `libgit2` at version bump.
+  # See comments below for details.
   url "https://github.com/est31/cargo-udeps/archive/refs/tags/v0.1.42.tar.gz"
   sha256 "b89c4ba44112a5b9d544bc8555a69f2fa24f44a0a389035cd38f19827a262e78"
   license any_of: ["Apache-2.0", "MIT"]
+  revision 1
 
   bottle do
     sha256 cellar: :any_skip_relocation, arm64_ventura:  "c23b5b6693551bc577db0e793b2f77d976130cb96e7af5ac0f3a73c272de673f"
@@ -17,7 +20,13 @@ class CargoUdeps < Formula
 
   depends_on "rust" => :build
   depends_on "rustup-init" => :test
-  depends_on "libgit2"
+  # To check for `libgit2` version:
+  # 1. Search for `libgit2-sys` version at https://github.com/est31/cargo-udeps/blob/v#{version}/Cargo.lock
+  # 2. If the version suffix of `libgit2-sys` is newer than +1.6.*, then:
+  #    - Migrate to the corresponding `libgit2` formula.
+  #    - Change the `LIBGIT2_SYS_USE_PKG_CONFIG` env var below to `LIBGIT2_NO_VENDOR`.
+  #      See: https://github.com/rust-lang/git2-rs/commit/59a81cac9ada22b5ea6ca2841f5bd1229f1dd659.
+  depends_on "libgit2@1.6"
   depends_on "libssh2"
   depends_on "openssl@3"
 
@@ -69,7 +78,7 @@ class CargoUdeps < Formula
     end
 
     [
-      Formula["libgit2"].opt_lib/shared_library("libgit2"),
+      Formula["libgit2@1.6"].opt_lib/shared_library("libgit2"),
       Formula["libssh2"].opt_lib/shared_library("libssh2"),
       Formula["openssl@3"].opt_lib/shared_library("libssl"),
       Formula["openssl@3"].opt_lib/shared_library("libcrypto"),
