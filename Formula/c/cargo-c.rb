@@ -1,9 +1,12 @@
 class CargoC < Formula
   desc "Helper program to build and install c-like libraries"
   homepage "https://github.com/lu-zero/cargo-c"
+  # TODO: check if we can use unversioned `libgit2` at version bump.
+  # See comments below for details.
   url "https://github.com/lu-zero/cargo-c/archive/refs/tags/v0.9.24.tar.gz"
   sha256 "32f2f5c802c01c51cf93471fcf876d0cc68edbc31d22005b9f07e4549d5b98b1"
   license "MIT"
+  revision 1
 
   livecheck do
     url :stable
@@ -21,7 +24,14 @@ class CargoC < Formula
   end
 
   depends_on "rust" => :build
-  depends_on "libgit2"
+  # To check for `libgit2` version:
+  # 1. Check for `cargo` version at https://github.com/lu-zero/cargo-c/blob/v#{version}/Cargo.toml
+  # 2. Search for `libgit2-sys` version at https://github.com/rust-lang/cargo/blob/#{cargo_version}/Cargo.lock
+  # 3. If the version suffix of `libgit2-sys` is newer than +1.6.*, then:
+  #    - Use the corresponding `libgit2` formula.
+  #    - Change the `LIBGIT2_SYS_USE_PKG_CONFIG` env var below to `LIBGIT2_NO_VENDOR`.
+  #      See: https://github.com/rust-lang/git2-rs/commit/59a81cac9ada22b5ea6ca2841f5bd1229f1dd659.
+  depends_on "libgit2@1.6"
   depends_on "libssh2"
   depends_on "openssl@3"
 
@@ -55,7 +65,7 @@ class CargoC < Formula
     assert_match cargo_error, shell_output("#{bin}/cargo-cbuild cbuild 2>&1", 1)
 
     [
-      Formula["libgit2"].opt_lib/shared_library("libgit2"),
+      Formula["libgit2@1.6"].opt_lib/shared_library("libgit2"),
       Formula["libssh2"].opt_lib/shared_library("libssh2"),
       Formula["openssl@3"].opt_lib/shared_library("libssl"),
       Formula["openssl@3"].opt_lib/shared_library("libcrypto"),
