@@ -1,10 +1,12 @@
 class Sheldon < Formula
   desc "Fast, configurable, shell plugin manager"
   homepage "https://sheldon.cli.rs"
-  url "https://github.com/rossmacarthur/sheldon/archive/0.7.3.tar.gz"
+  # TODO: check if we can use unversioned `libgit2` at version bump.
+  # See comments below for steps.
+  url "https://github.com/rossmacarthur/sheldon/archive/refs/tags/0.7.3.tar.gz"
   sha256 "cf8844dce853156d076a6956733420ad7a9365e16a928e419b11de8bc634fc67"
   license any_of: ["Apache-2.0", "MIT"]
-  revision 1
+  revision 2
   head "https://github.com/rossmacarthur/sheldon.git", branch: "trunk"
 
   bottle do
@@ -20,7 +22,13 @@ class Sheldon < Formula
   depends_on "pkg-config" => :build
   depends_on "rust" => :build
   depends_on "curl"
-  depends_on "libgit2"
+  # To check for `libgit2` version:
+  # 1. Search for `libgit2-sys` version at https://github.com/rossmacarthur/sheldon/blob/#{version}/Cargo.lock
+  # 2. If the version suffix of `libgit2-sys` is newer than +1.6.*, then:
+  #    - Migrate to the corresponding `libgit2` formula.
+  #    - Change the `LIBGIT2_SYS_USE_PKG_CONFIG` env var below to `LIBGIT2_NO_VENDOR`.
+  #      See: https://github.com/rust-lang/git2-rs/commit/59a81cac9ada22b5ea6ca2841f5bd1229f1dd659.
+  depends_on "libgit2@1.6"
   depends_on "openssl@3"
 
   def install
@@ -31,6 +39,7 @@ class Sheldon < Formula
 
     # Replace vendored `libgit2` with our formula
     inreplace "Cargo.toml", /features = \["vendored-libgit2"\]/, "features = []"
+    ENV["LIBGIT2_SYS_USE_PKG_CONFIG"] = "1"
 
     system "cargo", "install", *std_cargo_args
 
@@ -52,7 +61,7 @@ class Sheldon < Formula
     assert_predicate testpath/"plugins.lock", :exist?
 
     [
-      Formula["libgit2"].opt_lib/shared_library("libgit2"),
+      Formula["libgit2@1.6"].opt_lib/shared_library("libgit2"),
       Formula["curl"].opt_lib/shared_library("libcurl"),
       Formula["openssl@3"].opt_lib/shared_library("libssl"),
       Formula["openssl@3"].opt_lib/shared_library("libcrypto"),
