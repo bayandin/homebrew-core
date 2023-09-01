@@ -6,13 +6,13 @@ class Arrayfire < Formula
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "e916ffb9494f4ae60b3175ab5f0fbdbb28692e1c089717231c92b889a36a8ae8"
-    sha256 cellar: :any,                 arm64_monterey: "34f2ce47650347432d1450987136ea6cb1422ecd38d37ae069cbc2740083f757"
-    sha256 cellar: :any,                 arm64_big_sur:  "b6608aeabf74e797ea20f252c0d628ddd5ceaba521007e334fe6a48c0d64a36b"
-    sha256 cellar: :any,                 ventura:        "e5403a4ce6bc13591df9f4ce264a1d371ef07f55f4f8e8010c16d239b2781f68"
-    sha256 cellar: :any,                 monterey:       "9d7acf295cf98c0a83b5bcd20f52b751061e190a493c14395953d1fe581d7681"
-    sha256 cellar: :any,                 big_sur:        "f915f6c9b0bfd74bfc4439540da386a4ecb2c7689d365bbf400b4baf33b4bf4c"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "21ee45b0496f607d95fed9d002eb4b8a5a0e544bf1a7fa661dd8434c42829920"
+    sha256 cellar: :any,                 arm64_ventura:  "650969590a44f7c5d1d5000989953878a03e4549e18ca3a0321b376b1176a8cb"
+    sha256 cellar: :any,                 arm64_monterey: "32b390606d4d6ab98777cfcc3881f9bb8da57a1fd6fecd1ba11808a618bbbb22"
+    sha256 cellar: :any,                 arm64_big_sur:  "7e325b8e045a50b5f63cf19abddd117b6bcade0841747acb4ce4adb300467fdf"
+    sha256 cellar: :any,                 ventura:        "dfcaf43eff1c00bb58a88cf6810e1ae62a32396463494bfbb7c2436399550b2a"
+    sha256 cellar: :any,                 monterey:       "4255dcc58fe0924ec7e8259a40775f4d2a76a667d41f3a6a83189781ac54c540"
+    sha256 cellar: :any,                 big_sur:        "e78ce63335d09e140f8a3f556226f08668eaaa96bb0d0679296f802094914692"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "0d776a57f42864b0bddcd6826196b0ae10adf21f9619fee0496d5f91fd48440e"
   end
 
   depends_on "boost" => :build
