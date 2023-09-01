@@ -1,10 +1,9 @@
 class Arrayfire < Formula
   desc "General purpose GPU library"
   homepage "https://arrayfire.com"
-  url "https://github.com/arrayfire/arrayfire/releases/download/v3.8.3/arrayfire-full-3.8.3.tar.bz2"
-  sha256 "331e28f133d39bc4bdbc531db400ba5d9834ed2d41578a0b8e68b73ee4ee423c"
+  url "https://github.com/arrayfire/arrayfire/releases/download/v3.9.0/arrayfire-full-3.9.0.tar.bz2"
+  sha256 "8356c52bf3b5243e28297f4b56822191355216f002f3e301d83c9310a4b22348"
   license "BSD-3-Clause"
-  revision 2
 
   bottle do
     sha256 cellar: :any,                 arm64_ventura:  "e916ffb9494f4ae60b3175ab5f0fbdbb28692e1c089717231c92b889a36a8ae8"
@@ -25,6 +24,12 @@ class Arrayfire < Formula
   depends_on "openblas"
   depends_on "spdlog"
 
+  on_linux do
+    depends_on "opencl-headers" => :build
+    depends_on "opencl-icd-loader"
+    depends_on "pocl"
+  end
+
   fails_with gcc: "5"
 
   def install
@@ -42,11 +47,18 @@ class Arrayfire < Formula
     system "cmake", "-S", ".", "-B", "build",
                     "-DAF_BUILD_CUDA=OFF",
                     "-DAF_COMPUTE_LIBRARY=FFTW/LAPACK/BLAS",
+                    "-DCMAKE_CXX_STANDARD=17",
                     "-DCMAKE_INSTALL_RPATH=#{rpaths.join(";")}",
                     *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
 
+    # Remove debug info. These files make patchelf fail.
+    rm_f [
+      lib/"libaf.debug",
+      lib/"libafcpu.debug",
+      lib/"libafopencl.debug",
+    ]
     pkgshare.install "examples"
   end
 
