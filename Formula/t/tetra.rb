@@ -11,13 +11,13 @@ class Tetra < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "6d694725de8b29c3fadce0d5f653add0d01b640a6ba1b631d3d780a5a7d11d61"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "1ef7b82f4694e349a77dbff4ba03b37dca5ac4e87495cbda55b90f773ab7551c"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b5e9c2ec098ca6e865d330332fcf236258b93ad649356a438f5c9cdec4c8b21c"
-    sha256 cellar: :any_skip_relocation, ventura:        "5899d07a9b3c2596b5cfd86c7c18fd80ed2b7dfdbd93bc341cf84a38d5458261"
-    sha256 cellar: :any_skip_relocation, monterey:       "4c3ad378e8b5de07c7777f1e389d2445d20d338ab2df29df8ca00c9a05a6aa00"
-    sha256 cellar: :any_skip_relocation, big_sur:        "73bf29013bb21afad43dee7d0c656b52f552ab9daa79bb2d323fbd896d0487c2"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ff61d5ccd98199d373588b5b4c6d1f8ed6cf11c64789739757a708d267cc6a37"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "29f4a665cf807083cd5675517aff08210bfc35fb237b3f817804a53ca0fa6a57"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "3455a344547c020e2d88538ab2f5512e16fc97fb5bded88511780c812609d3dd"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "55052826f57ac587264b77ce625b9654c36dd255bed76fdf1abb5d318dfd2c07"
+    sha256 cellar: :any_skip_relocation, ventura:        "8f65ffdfc76ebad0abe6e87de5d161681ca7260395541859c494b9d0f85c1be8"
+    sha256 cellar: :any_skip_relocation, monterey:       "9e657051d7992f356628c1632717001578f74a9a0805a0b90925516056f100cc"
+    sha256 cellar: :any_skip_relocation, big_sur:        "dee2f468e4f6cf965ffff7b0ff73686a353bfa45963b2d249994d0dec1b5ad3a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "bce2b9a6dd60bf7b9ad2d8df30e76bc2ebc4165440b5fa368e7fd894f10df448"
   end
 
   depends_on "go" => :build
