@@ -2,7 +2,7 @@ class Libgit2Glib < Formula
   desc "Glib wrapper library around libgit2 git access library"
   homepage "https://gitlab.gnome.org/GNOME/libgit2-glib"
   license "LGPL-2.1-only"
-  revision 1
+  revision 2
   head "https://gitlab.gnome.org/GNOME/libgit2-glib.git", branch: "master"
 
   stable do
