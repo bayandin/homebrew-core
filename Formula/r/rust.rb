@@ -2,8 +2,11 @@ class Rust < Formula
   desc "Safe, concurrent, practical language"
   homepage "https://www.rust-lang.org/"
   license any_of: ["Apache-2.0", "MIT"]
+  revision 1
 
   stable do
+    # TODO: check if we can use unversioned `libgit2` at version bump.
+    # See comments below for details.
     url "https://static.rust-lang.org/dist/rustc-1.72.0-src.tar.gz"
     sha256 "ea9d61bbb51d76b6ea681156f69f0e0596b59722f04414b01c6e100b4b5be3a1"
 
@@ -46,7 +49,13 @@ class Rust < Formula
   depends_on "cmake" => :build
   depends_on "ninja" => :build
   depends_on "python@3.11" => :build
-  depends_on "libgit2"
+  # To check for `libgit2` version:
+  # 1. Search for `libgit2-sys` version at https://github.com/rust-lang/cargo/blob/#{version}/Cargo.lock
+  # 2. If the version suffix of `libgit2-sys` is newer than +1.6.*, then:
+  #    - Use the corresponding `libgit2` formula.
+  #    - Change the `LIBGIT2_SYS_USE_PKG_CONFIG` env var below to `LIBGIT2_NO_VENDOR`.
+  #      See: https://github.com/rust-lang/git2-rs/commit/59a81cac9ada22b5ea6ca2841f5bd1229f1dd659.
+  depends_on "libgit2@1.6"
   depends_on "libssh2"
   depends_on "llvm"
   depends_on "openssl@3"
@@ -161,6 +170,14 @@ class Rust < Formula
     end
   end
 
+  def check_binary_linkage(binary, library)
+    binary.dynamically_linked_libraries.any? do |dll|
+      next false unless dll.start_with?(HOMEBREW_PREFIX.to_s)
+
+      File.realpath(dll) == File.realpath(library)
+    end
+  end
+
   test do
     system bin/"rustdoc", "-h"
     (testpath/"hello.rs").write <<~EOS
@@ -172,5 +189,28 @@ class Rust < Formula
     assert_equal "Hello World!\n", shell_output("./hello")
     system bin/"cargo", "new", "hello_world", "--bin"
     assert_equal "Hello, world!", cd("hello_world") { shell_output("#{bin}/cargo run").split("\n").last }
+
+    # We only check the tools' linkage here. No need to check rustc.
+    expected_linkage = {
+      bin/"cargo" => [
+        Formula["libgit2@1.6"].opt_lib/shared_library("libgit2"),
+        Formula["libssh2"].opt_lib/shared_library("libssh2"),
+        Formula["openssl@3"].opt_lib/shared_library("libcrypto"),
+        Formula["openssl@3"].opt_lib/shared_library("libssl"),
+      ],
+    }
+    unless OS.mac?
+      expected_linkage[bin/"cargo"] += [
+        Formula["curl"].opt_lib/shared_library("libcurl"),
+        Formula["zlib"].opt_lib/shared_library("libz"),
+      ]
+    end
+    missing_linkage = []
+    expected_linkage.each do |binary, dylibs|
+      dylibs.each do |dylib|
+        missing_linkage << "#{binary} => #{dylib}" unless check_binary_linkage(binary, dylib)
+      end
+    end
+    assert missing_linkage.empty?, "Missing linkage: #{missing_linkage.join(", ")}"
   end
 end
