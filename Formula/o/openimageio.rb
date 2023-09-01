@@ -1,10 +1,9 @@
 class Openimageio < Formula
   desc "Library for reading, processing and writing images"
   homepage "https://openimageio.org/"
-  url "https://github.com/OpenImageIO/oiio/archive/v2.4.14.0.tar.gz"
-  sha256 "92ad4b107394b273397baa1abe90207e1f8ef9fd52ffbfc23b46e3b0005d4439"
+  url "https://github.com/OpenImageIO/oiio/archive/v2.4.15.0.tar.gz"
+  sha256 "b2d76e3880d25d3b005f7c694811a991ccebb6e396965959d194f79c369ff390"
   license "Apache-2.0"
-  revision 1
   head "https://github.com/OpenImageIO/oiio.git", branch: "master"
 
   livecheck do
