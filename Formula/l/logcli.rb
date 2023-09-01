@@ -29,7 +29,15 @@ class Logcli < Formula
   end
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w"), "./cmd/logcli"
+    ldflags = %W[
+      -s -w
+      -X github.com/grafana/loki/pkg/util/build.Branch=main
+      -X github.com/grafana/loki/pkg/util/build.Version=#{version}
+      -X github.com/grafana/loki/pkg/util/build.BuildUser=homebrew
+      -X github.com/grafana/loki/pkg/util/build.BuildDate=#{time.iso8601}
+    ]
+
+    system "go", "build", *std_go_args(ldflags: ldflags), "./cmd/logcli"
   end
 
   test do
