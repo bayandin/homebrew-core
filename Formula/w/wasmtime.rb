@@ -46,6 +46,9 @@ class Wasmtime < Formula
         (func (export "run") (call $hello))
       )
     EOS
+
+    # Example from https://docs.wasmtime.dev/examples-c-hello-world.html to test C library API,
+    # with comments removed for brevity
     (testpath/"hello.c").write <<~EOS
       #include <assert.h>
       #include <stdio.h>
@@ -70,21 +73,14 @@ class Wasmtime < Formula
 
       int main() {
         int ret = 0;
-        // Set up our compilation context. Note that we could also work with a
-        // `wasm_config_t` here to configure what feature are enabled and various
-        // compilation settings.
         printf("Initializing...\\n");
         wasm_engine_t *engine = wasm_engine_new();
         assert(engine != NULL);
 
-        // With an engine we can create a *store* which is a long-lived group of wasm
-        // modules. Note that we allocate some custom data here to live in the store,
-        // but here we skip that and specify NULL.
         wasmtime_store_t *store = wasmtime_store_new(engine, NULL, NULL);
         assert(store != NULL);
         wasmtime_context_t *context = wasmtime_store_context(store);
 
-        // Read our input file, which in this case is a wasm text file.
         FILE* file = fopen("./hello.wat", "r");
         assert(file != NULL);
         fseek(file, 0L, SEEK_END);
@@ -95,14 +91,12 @@ class Wasmtime < Formula
         assert(fread(wat.data, file_size, 1, file) == 1);
         fclose(file);
 
-        // Parse the wat into the binary wasm format
         wasm_byte_vec_t wasm;
         wasmtime_error_t *error = wasmtime_wat2wasm(wat.data, wat.size, &wasm);
         if (error != NULL)
           exit_with_error("failed to parse wat", error, NULL);
         wasm_byte_vec_delete(&wat);
 
-        // Now that we've got our binary webassembly we can compile our module.
         printf("Compiling module...\\n");
         wasmtime_module_t *module = NULL;
         error = wasmtime_module_new(engine, (uint8_t*) wasm.data, wasm.size, &module);
@@ -110,19 +104,11 @@ class Wasmtime < Formula
         if (error != NULL)
           exit_with_error("failed to compile module", error, NULL);
 
-        // Next up we need to create the function that the wasm module imports. Here
-        // we'll be hooking up a thunk function to the `hello_callback` native
-        // function above. Note that we can assign custom data, but we just use NULL
-        // for now).
         printf("Creating callback...\\n");
         wasm_functype_t *hello_ty = wasm_functype_new_0_0();
         wasmtime_func_t hello;
         wasmtime_func_new(context, hello_ty, hello_callback, NULL, NULL, &hello);
 
-        // With our callback function we can now instantiate the compiled module,
-        // giving us an instance we can then execute exports from. Note that
-        // instantiation can trap due to execution of the `start` function, so we need
-        // to handle that here too.
         printf("Instantiating module...\\n");
         wasm_trap_t *trap = NULL;
         wasmtime_instance_t instance;
@@ -133,20 +119,17 @@ class Wasmtime < Formula
         if (error != NULL || trap != NULL)
           exit_with_error("failed to instantiate", error, trap);
 
-        // Lookup our `run` export function
         printf("Extracting export...\\n");
         wasmtime_extern_t run;
         bool ok = wasmtime_instance_export_get(context, &instance, "run", 3, &run);
         assert(ok);
         assert(run.kind == WASMTIME_EXTERN_FUNC);
 
-        // And call it!
         printf("Calling export...\\n");
         error = wasmtime_func_call(context, &run.of.func, NULL, 0, NULL, 0, &trap);
         if (error != NULL || trap != NULL)
           exit_with_error("failed to call function", error, trap);
 
-        // Clean up after ourselves at this point
         printf("All finished!\\n");
         ret = 0;
 
@@ -171,16 +154,19 @@ class Wasmtime < Formula
         exit(1);
       }
     EOS
+
     system ENV.cc, "hello.c", "-I#{include}", "-L#{lib}", "-lwasmtime", "-o", "hello"
-    expected="Initializing...
-Compiling module...
-Creating callback...
-Instantiating module...
-Extracting export...
-Calling export...
-Calling back...
-> Hello World!
-All finished!"
-    assert_equal expected, shell_output("./hello").chomp
+    expected = <<~EOS
+      Initializing...
+      Compiling module...
+      Creating callback...
+      Instantiating module...
+      Extracting export...
+      Calling export...
+      Calling back...
+      > Hello World!
+      All finished!
+    EOS
+    assert_equal expected, shell_output("./hello")
   end
 end
