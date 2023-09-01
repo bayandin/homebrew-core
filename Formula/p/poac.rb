@@ -4,7 +4,7 @@ class Poac < Formula
   url "https://github.com/poac-dev/poac/archive/refs/tags/0.6.0.tar.gz"
   sha256 "40f55553f7cca3bdad39599ce8c9049aeecf8f6140cfebac28c51d7d9abbbb78"
   license "Apache-2.0"
-  revision 3
+  revision 4
   head "https://github.com/poac-dev/poac.git", branch: "main"
 
   bottle do
@@ -40,7 +40,11 @@ class Poac < Formula
   def install
     ENV.llvm_clang if OS.mac? && (DevelopmentTools.clang_build_version <= 1200)
 
-    system "cmake", "-B", "build", "-DPOAC_BUILD_TESTING=OFF", *std_cmake_args
+    # Help to find OpenSSL.
+    inreplace "cmake/AddOpenSSL.cmake", "${POAC_HOMEBREW_ROOT_PATH}/openssl",
+                                        Formula["openssl@3"].opt_prefix
+
+    system "cmake", "-S", ".", "-B", "build", "-DPOAC_BUILD_TESTING=OFF", *std_cmake_args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
 
