@@ -8,13 +8,13 @@ class Borgbackup < Formula
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "0fc920fe20aec725259a563d339391949b42a45271bcf01f9af48854a4da5d21"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "fd28b9cebd3fa4b174c10f8a7b28420d7137b231c322548e619b51c709308806"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e4cfe96dbd33dc4f0fc2a5ab17eb3a2f88eaaae89e78c83b9224925a178dddc9"
-    sha256 cellar: :any_skip_relocation, ventura:        "2e5f6e6070030d9878d78d180d362c28b9e208186c3300c199656ec6ff280ec1"
-    sha256 cellar: :any_skip_relocation, monterey:       "fa07b434b6e8c2b55e0dfa2d2c59fbfe37050afb89815dcc41429131af080e9f"
-    sha256 cellar: :any_skip_relocation, big_sur:        "086a020438883d323705e11cb5adba6cd377e31db838cb287e63d900c7940c44"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "66649b67eeed42068e21f1b6597e55ea7f2e1baac399bc16659c3c4a1eef6838"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "5c9cb732df27f4a87342c39b7f4de834dd53c252b3a2c0888cce02cf507d93a7"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "e6bf97ca6db8d2a536ff41040c01a584a80fec46ceb0c5fe627a4bbdb296433d"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "6a5eb195a3d26ed1f7923413d82b93e3d75c3826c1dc51c9add61b0daa89b601"
+    sha256 cellar: :any_skip_relocation, ventura:        "3e0f49a545943651814fb75d6320fe8ef2d035b63a74e7225973ad01d39eef16"
+    sha256 cellar: :any_skip_relocation, monterey:       "8add3eb524d579a4bea6a55e09728057123d5c4879ed966bc2a5eb5d649dcbc4"
+    sha256 cellar: :any_skip_relocation, big_sur:        "1e3832bc6484a7a347e9c87715723b72ccf5d83ecba15fec2d5664d878fe7271"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1d829fe8f25d6286444e2fb74b95996c99929e7964d11136f0705c6fa071756a"
   end
 
   depends_on "pkg-config" => :build
