@@ -8,13 +8,13 @@ class AwsElasticbeanstalk < Formula
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "5f8ace4ae1caae4b1e245aa08f6694d744c23c902107b91f516a1b114bc284ea"
-    sha256 cellar: :any,                 arm64_monterey: "80e151d4cd7691e255d4aebc220f8aaba3e24778caeeb50ab24fda45df5fe847"
-    sha256 cellar: :any,                 arm64_big_sur:  "1393f00359a2ca527e405d380f4ad6def5df2397773ed35e2b990bb295fb5568"
-    sha256 cellar: :any,                 ventura:        "ad9ab2447c9374ca7fa6af5b62301aee1b8e5806955c543a0caef5699e1f26db"
-    sha256 cellar: :any,                 monterey:       "412977e65aaacc350901e96d2f9ca5d0a528729d9eec1e0398c7c1f158684790"
-    sha256 cellar: :any,                 big_sur:        "ea1e723cd07036913a1400eab2184e71f7df6fa64f4c44988b65f2a05ad1afea"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6503f924f91433e8eabb3ee6025e8e6bfb4c676b3b7e745f744748c63d96dd90"
+    sha256 cellar: :any,                 arm64_ventura:  "5812ca3343085d2183a53cec84aedb6dc51e5379de570fd5e05514965b8811c9"
+    sha256 cellar: :any,                 arm64_monterey: "50f6a6e76f48d25eb080156e33be2b6c8262b023c19e1bae4f706681598a0fc0"
+    sha256 cellar: :any,                 arm64_big_sur:  "1483212b8d31c68fb2e36ea40baf04e4aca2a4d8885e133ebaaf4f95276a333b"
+    sha256 cellar: :any,                 ventura:        "d8f2bea167c76ea6f3afbbc16fa1230808604282b71b368673336fd75bb30ec5"
+    sha256 cellar: :any,                 monterey:       "1b488072fb2447ea22322eca988578fb023a735da61749ea734072715e73f9db"
+    sha256 cellar: :any,                 big_sur:        "763cb534b83e0d38f1ad6137d5d44d5c52b4671478077fe514642c814d9fc648"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3242baee1f0cfa80db4c6beecfb3bf2bbf969fbe6b636fa4a810e11f6e2c44c8"
   end
 
   # `pkg-config` and `rust` are for bcrypt
