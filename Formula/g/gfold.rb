@@ -1,9 +1,12 @@
 class Gfold < Formula
   desc "Help keep track of your Git repositories, written in Rust"
   homepage "https://github.com/nickgerace/gfold"
+  # TODO: check if we can use unversioned `libgit2` at version bump.
+  # See comments below for details.
   url "https://github.com/nickgerace/gfold/archive/refs/tags/4.4.0.tar.gz"
   sha256 "d1f8c5a578bc20751a8584c73d4df3092364b0616226656d71dbf954edd481c3"
   license "Apache-2.0"
+  revision 1
   head "https://github.com/nickgerace/gfold.git", branch: "main"
 
   bottle do
@@ -18,7 +21,13 @@ class Gfold < Formula
 
   depends_on "pkg-config" => :build
   depends_on "rust" => :build
-  depends_on "libgit2"
+  # To check for `libgit2` version:
+  # 1. Search for `libgit2-sys` version at https://github.com/nickgerace/gfold/blob/#{version}/Cargo.lock
+  # 2. If the version suffix of `libgit2-sys` is newer than +1.6.*, then:
+  #    - Migrate to the corresponding `libgit2` formula.
+  #    - Change the `LIBGIT2_SYS_USE_PKG_CONFIG` env var below to `LIBGIT2_NO_VENDOR`.
+  #      See: https://github.com/rust-lang/git2-rs/commit/59a81cac9ada22b5ea6ca2841f5bd1229f1dd659.
+  depends_on "libgit2@1.6"
 
   uses_from_macos "zlib"
 
@@ -46,7 +55,7 @@ class Gfold < Formula
     linkage_with_libgit2 = (bin/"gfold").dynamically_linked_libraries.any? do |dll|
       next false unless dll.start_with?(HOMEBREW_PREFIX.to_s)
 
-      File.realpath(dll) == (Formula["libgit2"].opt_lib/shared_library("libgit2")).realpath.to_s
+      File.realpath(dll) == (Formula["libgit2@1.6"].opt_lib/shared_library("libgit2")).realpath.to_s
     end
 
     assert linkage_with_libgit2, "No linkage with libgit2! Cargo is likely using a vendored version."
