@@ -1,8 +1,8 @@
 class EmacsDracula < Formula
   desc "Dark color theme available for a number of editors"
   homepage "https://github.com/dracula/emacs"
-  url "https://github.com/dracula/emacs/archive/v1.7.0.tar.gz"
-  sha256 "dbbcc968cf8187a8ada9f040137ba03dc0e51b285e96e128d26cea05cf470330"
+  url "https://github.com/dracula/emacs/archive/v1.8.0.tar.gz"
+  sha256 "6ab6712554e06e117391d142c10223ceaa2f8af1fa9f08a76ea02111a8827510"
   license "MIT"
   head "https://github.com/dracula/emacs.git", branch: "master"
 
