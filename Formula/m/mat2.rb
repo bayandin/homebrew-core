@@ -6,7 +6,13 @@ class Mat2 < Formula
   license "LGPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "592b41922c9a703cf1bf672b2da4d181957e790334780d3c6326727368fd727a"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "d819a4c3378ae61661b84cb80b6af98dbad0a428f1df8d449535921f02aa4b0b"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "d70ff80d80b17a49cb04e3a7a9f57193b6c6ecb4d8d16ef4ed3e6c774c1cabf4"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b46db4fed2cc62e1d49ea4dae92e377be930a5ec4c68567f238cc040ad9aa2b2"
+    sha256 cellar: :any_skip_relocation, ventura:        "e2dd7f2c2173b2b9ed71e7679eaabc566662f29b022ec79bc02e27bfa7c129ba"
+    sha256 cellar: :any_skip_relocation, monterey:       "9a853a6c22eea046e1215a2bb0b27285f7d676257804d54372d67463be5c5b32"
+    sha256 cellar: :any_skip_relocation, big_sur:        "e2f8e5df6a82ec6922cd6d37f1b5324f5f230cff057e24a3aeee7e7c1aad74ee"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "96f1839a0c399423ac7ceff166d28ea992671b2b52cd1a43fde19d9a8293c5e2"
   end
 
   depends_on "exiftool"
