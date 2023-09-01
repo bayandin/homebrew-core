@@ -3,8 +3,8 @@ class AwsElasticbeanstalk < Formula
 
   desc "Client for Amazon Elastic Beanstalk web service"
   homepage "https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html"
-  url "https://files.pythonhosted.org/packages/53/be/08a7d9043612ba8bfc0c8d4af6d1bdba71da7eafe9132541c3128f979b3f/awsebcli-3.20.8.tar.gz"
-  sha256 "c3475febf6bc56e5ba2836cd0abceb53869416a6c86eadd88cd8af6aa0530aa3"
+  url "https://files.pythonhosted.org/packages/19/1a/22fc71c6afb3b225467bfbaea1bfadf7daef8a8f047c65cf6625c5fe9bec/awsebcli-3.20.9.tar.gz"
+  sha256 "79c28c7ca949673e2cc269679b78ad6345d9447b9f590ba4bb0503e61d52bd05"
   license "Apache-2.0"
 
   bottle do
@@ -46,8 +46,8 @@ class AwsElasticbeanstalk < Formula
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/d3/32/dfad272f2f6112f597e2487a1068efeb7d782d7aed91276f9431b66253b7/botocore-1.31.26.tar.gz"
-    sha256 "e68a50ba76425ede8693fdf1f95b8411e283bc7619c03d7eb666db9f1de48153"
+    url "https://files.pythonhosted.org/packages/bc/87/e7a751e707a1e996a617f30d6200e6b8f2dc4c600cb369bb798236ee2225/botocore-1.31.39.tar.gz"
+    sha256 "61aefac8b44f86a4581d4128cce30806f633357e8d8efc4f73367a8e62009e70"
   end
 
   resource "cement" do
@@ -183,9 +183,6 @@ class AwsElasticbeanstalk < Formula
   end
 
   def install
-    # update six constraint, upstream PR ref, https://github.com/aws/aws-elastic-beanstalk-cli/pull/447
-    inreplace "requirements.txt", "six>=1.11.0,<1.15.0", "six>=1.11.0,<1.17.0"
-
     virtualenv_install_with_resources
   end
 
