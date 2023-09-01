@@ -1,8 +1,8 @@
 class SeleniumServer < Formula
   desc "Browser automation for testing purposes"
   homepage "https://www.selenium.dev/"
-  url "https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.10.0/selenium-server-4.10.0.jar"
-  sha256 "f81325cc31fb9388f7efbed169a7f1ee4271bcf931661bea40cc751b5aa7424f"
+  url "https://github.com/SeleniumHQ/selenium/releases/download/selenium-4.12.0/selenium-server-4.12.0.jar"
+  sha256 "101ba154c36d433437d688d3e79f4b21362bcc7d1ebc94f8b879badadb33234c"
   license "Apache-2.0"
 
   livecheck do
@@ -20,13 +20,8 @@ class SeleniumServer < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "d47ec3d78127b08b3706f184aab9d4e254222820d1364509923702aab6c1f003"
   end
 
+  depends_on "geckodriver" => :test
   depends_on "openjdk"
-
-  on_linux do
-    # We need to have any webdriver installed for testing,
-    # macOS comes with safaridriver, let's use geckodriver for linux
-    depends_on "geckodriver" => :test
-  end
 
   def install
     libexec.install "selenium-server-#{version}.jar"
