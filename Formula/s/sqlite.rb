@@ -5,6 +5,7 @@ class Sqlite < Formula
   version "3.43.0"
   sha256 "49008dbf3afc04d4edc8ecfc34e4ead196973034293c997adad2f63f01762ae1"
   license "blessing"
+  revision 1
 
   livecheck do
     url :homepage
@@ -34,13 +35,19 @@ class Sqlite < Formula
     # Default value of MAX_VARIABLE_NUMBER is 999 which is too low for many
     # applications. Set to 250000 (Same value used in Debian and Ubuntu).
     ENV.append "CPPFLAGS", %w[
+      -DSQLITE_ENABLE_API_ARMOR=1
       -DSQLITE_ENABLE_COLUMN_METADATA=1
+      -DSQLITE_ENABLE_DBSTAT_VTAB=1
       -DSQLITE_ENABLE_FTS3=1
       -DSQLITE_ENABLE_FTS3_PARENTHESIS=1
+      -DSQLITE_ENABLE_FTS5=1
       -DSQLITE_ENABLE_JSON1=1
+      -DSQLITE_ENABLE_MEMORY_MANAGEMENT=1
       -DSQLITE_ENABLE_RTREE=1
+      -DSQLITE_ENABLE_STAT4=1
       -DSQLITE_ENABLE_UNLOCK_NOTIFY=1
       -DSQLITE_MAX_VARIABLE_NUMBER=250000
+      -DSQLITE_USE_URI=1
     ].join(" ")
 
     args = %W[
