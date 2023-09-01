@@ -9,13 +9,13 @@ class Dooit < Formula
   head "https://github.com/kraanzu/dooit.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "1c8fc7b7c2b5eb69899114bc3c647321358750961d00c0170f26f7b766ccce39"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "17bb622b568b3210a6b0eb4179492a132b920c9f98fdea7e288c44ea87245494"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e49130c382b4161fe3e063a8a0c3a15aea5b393003813f79739ddcb2c1f48ffa"
-    sha256 cellar: :any_skip_relocation, ventura:        "31504804554493ffd3a9028d0bcd23bba35036020250637c5671b3fc79160d64"
-    sha256 cellar: :any_skip_relocation, monterey:       "352e119092ed7f77531fb32956b88021fb5b8bcb6b9b5ae9d4f086f1dd7559e7"
-    sha256 cellar: :any_skip_relocation, big_sur:        "9ee1d0fe1f116fac4d75f7f30e9d3246c2e02b30be9cbec2b3f00f764ff798f3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ca320e93a5b1d109874adf5c96539fc1d08ea2f88e0d75a961c32ebba65bbf14"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "9587c60e47a221e4773abc504dc8c20c4ff776c953108db2e60c01b776edf756"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "8a2c5668b47cd8a2f7a7678b7da6393166d67d313df28322efdcd7f0f41c0a68"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "e2eed0f426de19c00a6cabf1f35f22b9f8906681fae0322e9eb59533b28e2747"
+    sha256 cellar: :any_skip_relocation, ventura:        "dc26f2ad2a052023fad268f0ba122803131821eac68d60dca69e1625fd6b7e99"
+    sha256 cellar: :any_skip_relocation, monterey:       "89cfe3e8c4d4334ea0b3c268c7316461f31137ee5eaaaaedac0cfe1ad14d752a"
+    sha256 cellar: :any_skip_relocation, big_sur:        "0c0ad00e9adb2867970584de056f826241e11a2fed526d6640ffda0fe6d713d7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "01a1fb3cdc6328a9eb96fffeaf42815d228224a297fccafb5f291e0a4c561059"
   end
 
   depends_on "cmake" => :build
