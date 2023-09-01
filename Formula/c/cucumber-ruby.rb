@@ -11,13 +11,13 @@ class CucumberRuby < Formula
   end
 
   bottle do
-    sha256                               arm64_ventura:  "63a75468e73e8201f581fb08ff5e7d23a0d31a3263d4c4d8156e2837c7098288"
-    sha256                               arm64_monterey: "c674a1582276891fbb6592041f5ffc2423e3a0ba869cef1fd0e7d5d0349329a4"
-    sha256                               arm64_big_sur:  "f922affbd0e4c738a0bbcafed5b9ca426336029b24f91ce248535afc17c03084"
-    sha256                               ventura:        "d20731d327188d4a02c1059d2aaf4599be99b32d8931571b7e727cd31feb33d3"
-    sha256                               monterey:       "aeca1ff5682acee4d1c8305ceb49a607861a32da7f4492b3d152380a1012d643"
-    sha256                               big_sur:        "082843d29dedbe24c41520c52f39929e02d0be6b6e93931c870f713f69e5b063"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3d25c5b6a9261e9488adcd3885bd186d498ff5056473f3de6095c82793be6828"
+    sha256 cellar: :any,                 arm64_ventura:  "5d09d605e0af70a41f048feaa739cfa779da9d1d32cda6be5be074feee921fcb"
+    sha256 cellar: :any,                 arm64_monterey: "172d85cf3d5372c1f7fc06e9426a18f50520c2ad37bb8473358885cb6ef62caa"
+    sha256 cellar: :any,                 arm64_big_sur:  "7a5c0f9ddf2b30cc460977a8c860e6e809a7c9e4cae12dd9d0a14c09765818af"
+    sha256 cellar: :any,                 ventura:        "4a780956fd3e7f946968d28a07e189858dc45b972b65132e6110b5160b5103fa"
+    sha256 cellar: :any,                 monterey:       "da66850318280fdb962bb0105a39d0e4a0e31fb822a08ddba6ad608578597c84"
+    sha256 cellar: :any,                 big_sur:        "c4f2f05ef49fffb548aab375ace5a63e252d51d3badc214b656ac463fba2bc0b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a1823a6ee885d11c1a007559907900283b71c6b76d8cb2544c904bdf3c89114e"
   end
 
   depends_on "pkg-config" => :build
