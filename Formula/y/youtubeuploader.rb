@@ -1,10 +1,19 @@
 class Youtubeuploader < Formula
   desc "Scripted uploads to Youtube"
   homepage "https://github.com/porjo/youtubeuploader"
-  url "https://github.com/porjo/youtubeuploader/archive/23.02.tar.gz"
-  sha256 "48f4315c713581547cd90b399c51a98f7d8a79c698f9a1f19f8a0d3dc70bd814"
+  url "https://github.com/porjo/youtubeuploader/archive/refs/tags/23.03.tar.gz"
+  sha256 "5cf1e4a410b92e920be7802ea2de59882395d529029fae2144bb72ed78aaca91"
   license "Apache-2.0"
   head "https://github.com/porjo/youtubeuploader.git", branch: "master"
+
+  # Upstream creates stable version tags (e.g., `23.03`) before a release but
+  # the version isn't considered to be released until a corresponding release
+  # is created on GitHub, so it's necessary to use the `GithubLatest` strategy.
+  # https://github.com/porjo/youtubeuploader/issues/169
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
 
   bottle do
     sha256 cellar: :any_skip_relocation, arm64_ventura:  "07b89e4ed8ee773dde84b81772471e48ee910d291989d577136c0368cc34f67f"
@@ -52,6 +61,6 @@ class Youtubeuploader < Formula
     EOS
 
     output = shell_output("#{bin}/youtubeuploader -filename #{test_fixtures("test.m4a")} 2>&1", 1)
-    assert_match "oauth2: cannot fetch token: 401 Unauthorized", output.strip
+    assert_match 'oauth2: "invalid_client" "The OAuth client was not found."', output
   end
 end
