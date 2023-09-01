@@ -2,9 +2,9 @@ class Dbus < Formula
   # releases: even (1.12.x) = stable, odd (1.13.x) = development
   desc "Message bus system, providing inter-application communication"
   homepage "https://wiki.freedesktop.org/www/Software/dbus"
-  url "https://dbus.freedesktop.org/releases/dbus/dbus-1.14.8.tar.xz"
-  mirror "https://deb.debian.org/debian/pool/main/d/dbus/dbus_1.14.8.orig.tar.xz"
-  sha256 "a6bd5bac5cf19f0c3c594bdae2565a095696980a683a0ef37cb6212e093bde35"
+  url "https://dbus.freedesktop.org/releases/dbus/dbus-1.14.10.tar.xz"
+  mirror "https://deb.debian.org/debian/pool/main/d/dbus/dbus_1.14.10.orig.tar.xz"
+  sha256 "ba1f21d2bd9d339da2d4aa8780c09df32fea87998b73da24f49ab9df1e36a50f"
   license any_of: ["AFL-2.1", "GPL-2.0-or-later"]
 
   livecheck do
