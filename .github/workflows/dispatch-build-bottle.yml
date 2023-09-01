@@ -45,13 +45,13 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const intelMacOSRegex = /^\d+(?:\.\d+)?$/;
+            const macOSRegex = /^\d+(?:\.\d+)?(?:-arm64)?$/;
             const linuxRegex = /^(ubuntu-|linux-self-hosted-)/;
             return context.payload.inputs.runner.split(",")
                                                 .map(s => s.trim())
                                                 .filter(Boolean)
                                                 .map(s => {
-              if (intelMacOSRegex.test(s) || s == "13-arm64" || s == "14-arm64") // Ephemeral runners
+              if (macOSRegex.test(s) && s != "11-arm64") // Ephemeral runners
                 return {runner: `${s}-${context.runId}`};
               else if (linuxRegex.test(s))
                 return {
