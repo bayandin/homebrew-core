@@ -4,7 +4,7 @@ class GitSeries < Formula
   url "https://github.com/git-series/git-series/archive/0.9.1.tar.gz"
   sha256 "c0362e19d3fa168a7cb0e260fcdecfe070853b163c9f2dfd2ad8213289bc7e5f"
   license "MIT"
-  revision 9
+  revision 10
 
   bottle do
     sha256 cellar: :any,                 arm64_ventura:  "1568eef8c171318e5252a2b70cf6c73593cdde9771aad628a4e488f959c549e4"
