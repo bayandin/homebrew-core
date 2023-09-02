@@ -9,13 +9,13 @@ class Nbdime < Formula
   revision 2
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "4777ef0a9a0b571b1c2c55aae75b88ea66c1b47f5ff91f3dcdf69af324a9b044"
-    sha256 cellar: :any,                 arm64_monterey: "a90f364a676aaaee5e84971b8df28cd20383dbd62d350fadb6c14c2713e05552"
-    sha256 cellar: :any,                 arm64_big_sur:  "a7de75f3ff7488a981aa1d18ecfe523a178eb4ff53d4919da98e393f36a75113"
-    sha256 cellar: :any,                 ventura:        "cb94e11e782e8a1d3b3b5581f9a0e009793542ede66a4f53ff869f706eb87958"
-    sha256 cellar: :any,                 monterey:       "8d92319e61ece60e23a2a3674bf5347c4197af4719fc76f64e6f70331a15a477"
-    sha256 cellar: :any,                 big_sur:        "1b1f0de44b4ced22eaaddfd848fe592388d573c5a7b62f05ad4097c332427c28"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b7ba75cf0b46e70fc47e886199e5c592a32ba7b178d691f8d627330099227dfe"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "4058c573e6b60df940e22505192701b98ba488ba983c8863df27269c5bd77bc4"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "ca594667a33afc96a1f60a881079f3d242102b4a70a1b56347f012f330d77c73"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "6c097270ebb2a966b80d5ab25f6c54d778dd1c32784a926067d62c28738f8074"
+    sha256 cellar: :any_skip_relocation, ventura:        "9d5c5e622c240ea2105ecbc6fbc6aaa0ec49c463b582fd7178967e896368d2b6"
+    sha256 cellar: :any_skip_relocation, monterey:       "466fc9452217ec92c44a36e4778b8a9a815a28c9a9e368152086b10ad1b5b259"
+    sha256 cellar: :any_skip_relocation, big_sur:        "e08a0bddfabc6e2bc5edcecf3902136a86d81684d466a1e9f730fd90de5e5bce"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "6cbb6c91ae3de21780272ed347387e4cedae6876689da4f97fc0beaae7d9044f"
   end
 
   depends_on "rust" => :build # for rpds-py
