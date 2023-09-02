@@ -1,8 +1,8 @@
 class Nfdump < Formula
   desc "Tools to collect and process netflow data on the command-line"
   homepage "https://github.com/phaag/nfdump"
-  url "https://github.com/phaag/nfdump/archive/v1.7.2.tar.gz"
-  sha256 "0545b792e81f5edd51a2fdfbfcc4eac7ba8087005811ab41c34bfac4d78fe926"
+  url "https://github.com/phaag/nfdump/archive/v1.7.3.tar.gz"
+  sha256 "9ea7e1ded34a81839b73e66cb62c9bc11a8070210584f9a508798d7bd6058c89"
   license "BSD-3-Clause"
   head "https://github.com/phaag/nfdump.git", branch: "master"
 
