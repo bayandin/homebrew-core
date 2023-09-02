@@ -11,16 +11,13 @@ class Sqliteodbc < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "e7b517422475c70e7177c1d8cdb3e02dead73d2ce0e1987097074c9695f95959"
-    sha256 cellar: :any,                 arm64_monterey: "8df10001bbf7daf13bd5b3d65f75edc7ea2b2dc6989873de14b957ad9bf7a4b1"
-    sha256 cellar: :any,                 arm64_big_sur:  "1024f38c091e42d18128dbfba82ee5a9a41e46670383f714df325303bda5b415"
-    sha256 cellar: :any,                 ventura:        "b0089b13a9504698398c2bb0be71754e00dd5f9325aec64be85800a0d5e3f6b2"
-    sha256 cellar: :any,                 monterey:       "df3e249a7780ffe6178fd754655a6313c4526c9f6eb06cf169c5776a669d749b"
-    sha256 cellar: :any,                 big_sur:        "5f98876aef9733997e750451ee0e3db30cc2bd1f371aa690f08d7e4038f11958"
-    sha256 cellar: :any,                 catalina:       "d0105cc73d44561e636923adb520710cdd7e0db835c6b31f151fe8a66a1b4fcc"
-    sha256 cellar: :any,                 mojave:         "6499af774d13212bf19dfdbd14c18feadf516a5d6afbd2ebe7718d99db1723eb"
-    sha256 cellar: :any,                 high_sierra:    "6220e24f32b5b26c5c983c9f9fb1aaa6aba7c13cad44a7500ecb72c7d7723a80"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "2f77f39a029206cffd13e303b4aec9705b413d3c8f4d3c1844d8e1634a48de82"
+    sha256 cellar: :any,                 arm64_ventura:  "b0a8f9a64312af200f4055137047fbefb91d16ff0ae725c68860201553c67eb0"
+    sha256 cellar: :any,                 arm64_monterey: "66da89464648d171f7c7db9d2e4eb0a284e73a70a74f59a5fcb19c9f92e3870f"
+    sha256 cellar: :any,                 arm64_big_sur:  "7d345b9c5b48cf74eab1f16657cab8bf9352dfca7b2b14fc9da9e714dc38b14c"
+    sha256 cellar: :any,                 ventura:        "d2befd3618c126838e53517eb552f5243735d6b790ac36f92f8299f33f51f266"
+    sha256 cellar: :any,                 monterey:       "51b3ad012528a10185ae3d288bbdac21c232ca31a15bc2c864f6c361ea247091"
+    sha256 cellar: :any,                 big_sur:        "2e557cba3fef6bebc851450e809252afc8fb98158d53ea3e1a56c306f9a12546"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "304e529c638e45f26761ca6838072f0c8015540aefab6173401ee9a0c162de1f"
   end
 
   depends_on "sqlite"
