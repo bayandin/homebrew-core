@@ -6,6 +6,16 @@ class TfProfile < Formula
   license "MIT"
   head "https://github.com/datarootsio/tf-profile.git", branch: "main"
 
+  bottle do
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "55e6cb67d424f1ba45cd147a430d6c8043618af1cd8cd458c7c104b0cd0c1328"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "55e6cb67d424f1ba45cd147a430d6c8043618af1cd8cd458c7c104b0cd0c1328"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "55e6cb67d424f1ba45cd147a430d6c8043618af1cd8cd458c7c104b0cd0c1328"
+    sha256 cellar: :any_skip_relocation, ventura:        "ff30b5edb01d8ad7cdd65444dc1b65610a0fa083648a2619196ecb4e162af09b"
+    sha256 cellar: :any_skip_relocation, monterey:       "ff30b5edb01d8ad7cdd65444dc1b65610a0fa083648a2619196ecb4e162af09b"
+    sha256 cellar: :any_skip_relocation, big_sur:        "ff30b5edb01d8ad7cdd65444dc1b65610a0fa083648a2619196ecb4e162af09b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "44ab3149686e3434357a4ae92e190b9d2f0cd0977c87799a7bc7386d75a5af47"
+  end
+
   depends_on "go" => :build
 
   def install
