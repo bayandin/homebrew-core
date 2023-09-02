@@ -6,7 +6,7 @@ class Mathlibtools < Formula
   url "https://files.pythonhosted.org/packages/ae/6a/815d7f65dc853973b13be082fefe797074e633407ef1262a62bc0be84203/mathlibtools-1.3.2.tar.gz"
   sha256 "9a49f4cb7355fda72792a5738bcc5df927b1e102efc719adfbe16db199a0ac6b"
   license "Apache-2.0"
-  revision 4
+  revision 5
 
   bottle do
     rebuild 2
@@ -38,8 +38,8 @@ class Mathlibtools < Formula
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/72/bd/fedc277e7351917b6c4e0ac751853a97af261278a4c7808babafa8ef2120/click-8.1.6.tar.gz"
-    sha256 "48ee849951919527a045bfe3bf7baa8a959c423134e1a5b98c05c20ba75a1cbd"
+    url "https://files.pythonhosted.org/packages/96/d3/f04c7bfcf5c1862a2a5b845c6b2b360488cf47af55dfa79c98f6a6bf98b5/click-8.1.7.tar.gz"
+    sha256 "ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"
   end
 
   resource "deprecated" do
@@ -53,8 +53,8 @@ class Mathlibtools < Formula
   end
 
   resource "gitpython" do
-    url "https://files.pythonhosted.org/packages/87/56/6dcdfde2f3a747988d1693100224fb88fc1d3bbcb3f18377b2a3ef53a70a/GitPython-3.1.32.tar.gz"
-    sha256 "8d9b8cb1e80b9735e8717c9362079d3ce4c6e5ddeebedd0361b228c3a67a62f6"
+    url "https://files.pythonhosted.org/packages/8d/1e/33389155dfe8cebbaa0c5b5ed0d3bd82c5e70064be00b2b3ee938da8b5d2/GitPython-3.1.33.tar.gz"
+    sha256 "13aaa3dff88a23afec2d00eb3da3f2e040e2282e41de484c5791669b31146084"
   end
 
   resource "idna" do
@@ -73,8 +73,8 @@ class Mathlibtools < Formula
   end
 
   resource "pygithub" do
-    url "https://files.pythonhosted.org/packages/92/90/11de38774314242ddfb5637a7cf9c80937c7e898699b8e63b407c212513e/PyGithub-1.59.0.tar.gz"
-    sha256 "6e05ff49bac3caa7d1d6177a10c6e55a3e20c85b92424cc198571fd0cf786690"
+    url "https://files.pythonhosted.org/packages/fb/30/203d3420960853e399de3b85d6613cea1cf17c1cf7fc9716f7ee7e17e0fc/PyGithub-1.59.1.tar.gz"
+    sha256 "c44e3a121c15bf9d3a5cc98d94c9a047a5132a9b01d22264627f58ade9ddc217"
   end
 
   resource "pyjwt" do
@@ -108,8 +108,8 @@ class Mathlibtools < Formula
   end
 
   resource "tqdm" do
-    url "https://files.pythonhosted.org/packages/3d/78/81191f56abb7d3d56963337dbdff6aa4f55805c8afd8bad64b0a34199e9b/tqdm-4.65.0.tar.gz"
-    sha256 "1871fb68a86b8fb3b59ca4cdd3dcccbc7e6d613eeed31f4c332531977b89beb5"
+    url "https://files.pythonhosted.org/packages/62/06/d5604a70d160f6a6ca5fd2ba25597c24abd5c5ca5f437263d177ac242308/tqdm-4.66.1.tar.gz"
+    sha256 "d88e651f9db8d8551a62556d3cff9e3034274ca5d66e93197cf2490e2dcb69c7"
   end
 
   resource "urllib3" do
