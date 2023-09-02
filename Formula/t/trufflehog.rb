@@ -5,7 +5,7 @@ class Trufflehog < Formula
   sha256 "0c42fa716182543e9ee0a784d43fa37d1033b922acbd28feeb25704d3d070170"
   # upstream license ask, https://github.com/trufflesecurity/trufflehog/issues/1446
   license "AGPL-3.0-only"
-  head "https://github.com/trufflesecurity/driftwood.git", branch: "main"
+  head "https://github.com/trufflesecurity/trufflehog.git", branch: "main"
 
   bottle do
     sha256 cellar: :any_skip_relocation, arm64_ventura:  "4250b539a3be1572a67e27a86041766a246d4e0c9e7e7f70f6e078211aa6ac14"
