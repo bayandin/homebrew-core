@@ -8,13 +8,13 @@ class Psutils < Formula
   license "GPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "dcc24c8f597ddaf4bc08b74612132161808c5c743334c4e4a715ceaea385d24c"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "fc9556d3a42d4e3f61616464559ee950a141e8f4356d61d562fd4617112ecc26"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "c0f89877c10235876f735416027adf1004c9124ebdb3a7816fff2e6c9150666c"
-    sha256 cellar: :any_skip_relocation, ventura:        "dc6bc21641cd9302febd11374aca51a9005117672503ba8148d48a447dac964f"
-    sha256 cellar: :any_skip_relocation, monterey:       "de338343cea2ea6b2495550095def7e2d918f3f39a82e5c661f18d715e3d255d"
-    sha256 cellar: :any_skip_relocation, big_sur:        "ae5e7f777cfdd4d4b8e7c8ee58d39fbb0a475c89e774cd66bfdc3343b1212b90"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d76b79604ef7aea41fd092fb0342fc983794fab01467d1adc3c8170f725d4111"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "7bda92ba721c532a137f406e9beb5356f55fe0cc9473d25b26db7b8aabd6674b"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "365be9982d23fa4b2e771523cde48733b489948b14a0fbdecfa03ab25621b641"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "50c2c6a08d3c3235c3ade1cd98c5bb9728d31211bfe7792869c8c4fed46b5be8"
+    sha256 cellar: :any_skip_relocation, ventura:        "e6e8371cdaa3d60c51845eed986c8178d1ba70f908ccd109c30e9381b52ad44e"
+    sha256 cellar: :any_skip_relocation, monterey:       "173d4ab77e46051bd94d7c63383aa57355d79770d34e885b1e3269e599cc9c93"
+    sha256 cellar: :any_skip_relocation, big_sur:        "e319fd9c14d60b26cc16764ead3cb5b4ce22595a26ecacdb395979208b5e6b82"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "7cee4873fbc431e920352a978d001c6e371f175a77ccea5f82d2d4739a7e77e4"
   end
 
   depends_on "libpaper"
