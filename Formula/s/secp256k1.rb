@@ -21,7 +21,14 @@ class Secp256k1 < Formula
 
   def install
     system "./autogen.sh"
-    system "./configure", *std_configure_args, "--disable-silent-rules", "--enable-module-recovery"
+    args = %w[
+      --disable-silent-rules
+      --enable-module-recovery
+      --enable-module-ecdh
+      --enable-module-schnorrsig
+      --enable-module-extrakeys
+    ]
+    system "./configure", *args, *std_configure_args
     system "make"
     system "make", "install"
   end
