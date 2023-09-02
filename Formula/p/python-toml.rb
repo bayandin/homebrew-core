@@ -6,7 +6,14 @@ class PythonToml < Formula
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, all: "96e51e41b34e32f8b186368deb71ead8c489d8dddf6e0d13bfbef3ef3fd12b99"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "834a2db12a6be2c576518cb07c20832abe43d65773d1ffd977ccd99da30bfa86"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "b51ad6a3ace38bd7f76e7b6215b51798a1de6ded5c621acfe9e10d0bf44dcb75"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "b3bb5124e9f72848f823cf130657f7b73846eae8e2d42355ef9b44e8d3c88143"
+    sha256 cellar: :any_skip_relocation, ventura:        "cdd774d5f3199a7afabaaee113680d326772fd6c0915554f564b4b3fe0238323"
+    sha256 cellar: :any_skip_relocation, monterey:       "2f7bf4095aecc3d0a50d08227af9fe573336e0a646bde2befa00d15d0f06fa02"
+    sha256 cellar: :any_skip_relocation, big_sur:        "84e09d7ad852223141dfbdcdd55504b291c2c27bfbaffb30ef44b86d3fe40be4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a4af3afd961e422d62ca04300144dd06e722e617b8ca90d0e66177980d306c66"
   end
 
   depends_on "python@3.11"
