@@ -295,7 +295,8 @@
       "python-swiftclient[keystone]", "requests[security]", "requests-oauthlib"
     ],
     "exclude_packages": [
-      "cffi", "cryptography", "protobuf", "pycparser", "PyYAML",
+      "cffi", "cryptography", "keyring", "lxml",
+      "protobuf", "pycparser", "pytz", "PyYAML",
       "six", "typing-extensions"
     ]
   },
