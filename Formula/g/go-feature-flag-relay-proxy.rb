@@ -1,9 +1,8 @@
 class GoFeatureFlagRelayProxy < Formula
   desc "Stand alone server to run GO Feature Flag"
   homepage "https://gofeatureflag.org"
-  url "https://github.com/thomaspoignant/go-feature-flag.git",
-      tag:      "v1.15.0",
-      revision: "403fa03c279bd4b5a19e3741da23ab11e1071490"
+  url "https://github.com/thomaspoignant/go-feature-flag/archive/refs/tags/v1.15.1.tar.gz"
+  sha256 "1aada56d7a43c1dc61df5bbd9f7f5d7e1d94b4eac324563572855887909a5d68"
   license "MIT"
   head "https://github.com/thomaspoignant/go-feature-flag.git", branch: "main"
 
@@ -20,12 +19,7 @@ class GoFeatureFlagRelayProxy < Formula
   depends_on "go" => :build
 
   def install
-    ENV["CGO_ENABLED"] = "0"
-    ldflags = %W[
-      -s -w
-      -X main.version=#{version}
-    ]
-
+    ldflags = "-s -w -X main.version=#{version}"
     system "go", "build", *std_go_args(ldflags: ldflags), "./cmd/relayproxy"
   end
 
