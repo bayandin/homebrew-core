@@ -1,8 +1,8 @@
 class Urlfinder < Formula
   desc "Extracting URLs and subdomains from JS files on a website"
   homepage "https://github.com/pingc0y/URLFinder"
-  url "https://github.com/pingc0y/URLFinder/archive/refs/tags/2023.8.30.tar.gz"
-  sha256 "a8a05f8bc9e4a1fe56b3920a213f12c60350004f85529280b45f90361d68a24b"
+  url "https://github.com/pingc0y/URLFinder/archive/refs/tags/2023.9.2.tar.gz"
+  sha256 "ffc5c2a92f3f43a2e135903a5a2d3ac2c3f7e21a9e4bcf0913f59687b1ccfdcc"
   license "MIT"
   head "https://github.com/pingc0y/URLFinder.git", branch: "master"
 
