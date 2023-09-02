@@ -1,8 +1,8 @@
 class Gmime < Formula
   desc "MIME mail utilities"
   homepage "https://github.com/jstedfast/gmime"
-  url "https://github.com/jstedfast/gmime/releases/download/3.2.13/gmime-3.2.13.tar.xz"
-  sha256 "2e10a54d4821daf8b16c019ad5d567e0fb8e766f8ffe5fec3d4c6a37373d6406"
+  url "https://github.com/jstedfast/gmime/releases/download/3.2.14/gmime-3.2.14.tar.xz"
+  sha256 "a5eb3dd675f72e545c8bc1cd12107e4aad2eaec1905eb7b4013cdb1fbe5e2317"
   license "LGPL-2.1-or-later"
 
   bottle do
