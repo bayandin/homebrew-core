@@ -7,14 +7,13 @@ class PythonBuild < Formula
   head "https://github.com/pypa/build.git", branch: "main"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "90134ae48e4aa340e3df110a19fab26463d1f556fd6154243859d02eff59b76a"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "4fe7214ad633c24ab6613e6934971947838c99bb75decdcd28bb1a648f2fb8aa"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "371b9da1b4b1ba74ef3cb158d55a3bf1fd0e11cffcac04f82fc24435cb1f1617"
-    sha256 cellar: :any_skip_relocation, ventura:        "4ceb88b44b9154b9b48b0480d12459510cdf099016ec4b20e29d7655ceb6ad7e"
-    sha256 cellar: :any_skip_relocation, monterey:       "b61c9c83b87e98978972713bb3c34eeaca0d655b3e29a2a65604f5ca9b271306"
-    sha256 cellar: :any_skip_relocation, big_sur:        "63e6f32e4320fc9f1d47f965cf41ac3aeb8887506eedb390a2b66851d8bc7c95"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "f26344bdbcc51b71d316e7312cf467e426251c6ba6d010ce87ca6d4154f857b6"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "11d8fa915bd3692dd18b709af436c0c68019b99de8c86c244c07f696cd209dc6"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "e7ba9531b49f1e6da1c13aa3e9559f8030fe39baf3ebbed743f797277bff3673"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "23e7c635441bd19786223b751d10b1dbb3323066f386b43c168ed2056be7b861"
+    sha256 cellar: :any_skip_relocation, ventura:        "40e47e157a16cf16fc05b15ffa53fad4abefcce6203462c8b047a6f58ec7f924"
+    sha256 cellar: :any_skip_relocation, monterey:       "0cc2a9e20599a232231ac8a261079d0c535135cfb6ec90fc013c2c9157ce2865"
+    sha256 cellar: :any_skip_relocation, big_sur:        "fc0ad0bdb6f1fb5f3cd0daff1abd2e47c6da31eafee8e8f672173b3b6a3cbdd6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "38eeeec61801e5eab1c28d94646f5f9d084a3fbee480fea293c1b09d9abe238f"
   end
 
   depends_on "python-flit-core" => :build
