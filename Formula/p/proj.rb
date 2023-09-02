@@ -7,13 +7,13 @@ class Proj < Formula
   head "https://github.com/OSGeo/proj.git", branch: "master"
 
   bottle do
-    sha256 arm64_ventura:  "4e765cd5770510556e04ee05b7ec732507f9eb70e382735c23f4cf0f3a094162"
-    sha256 arm64_monterey: "5dfad81b135fa02836e2f29a864217f5052799009b3c9fbc28de6de8212d1a2c"
-    sha256 arm64_big_sur:  "3cb6336ec473572c590855bb1c42c0fac97e838a7300b3212f9adea8d67781ab"
-    sha256 ventura:        "7f40a7b0043ef6490a3c7c0133b71e424fe6f4e8a576d42c9425f08a5df96c69"
-    sha256 monterey:       "19a4eca16421c5bb7ba52610de5603e1a05b8dbd598e6876a3e67433d02cf9b4"
-    sha256 big_sur:        "3a6cc8421523c7b513b083c0fd9793aa101108ef91575992a7e147bae2d6a0d1"
-    sha256 x86_64_linux:   "b0a93d2c51070b22bc9e256955b296d47f2bb10fe690238f88480611f7f5e078"
+    sha256 arm64_ventura:  "013f6cfcbaa0e776c15e0ed456f1baa6f6e1914e170d97cf70cc7fd406ca289c"
+    sha256 arm64_monterey: "3dfc90dfa619216cf3989ba9e3536b04dd5229898fdeeaa55cc94fa0a97f098c"
+    sha256 arm64_big_sur:  "b8b56f97f9e5ba87a248c049557e8e2055f92c1eea108a38c3c9c130bf6c64ee"
+    sha256 ventura:        "f0239cab1a3c91c01606ad000a74e8d55131380b12d00d348a0f4da8da90ad75"
+    sha256 monterey:       "d28fbbf764987002abbeb2048784ead3a931796cbdc509ccf045118e0955c99e"
+    sha256 big_sur:        "3cfd4b0c7b1613df28dcf6926ea0e6a93c98baf07f40079bb671d5825be41437"
+    sha256 x86_64_linux:   "a584d20eeb4163958e88213b041ecc76f5ab2b1866f99d511ea818ef92ed9461"
   end
 
   depends_on "cmake" => :build
