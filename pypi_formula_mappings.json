@@ -159,9 +159,7 @@
   },
   "conda-lock" : {
     "exclude_packages": [
-      "certifi", "cffi", "cryptography", "importlib-metadata", "jaraco-classes",
-      "jeepney", "keyring", "more-itertools", "pycparser", "PyYAML", "secretstorage",
-      "six", "typing-extensions", "virtualenv", "zipp"
+      "certifi", "cffi", "keyring", "pycparser", "pyyaml",  "six", "typing-extensions", "virtualenv"
     ]
   },
   "cfn-flip": {
