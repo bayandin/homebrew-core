@@ -17,13 +17,13 @@ class Qscintilla2 < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "0413baf5747d3d1c3b16d15e730e515e6b3fe4137726eb8710bd5992e0422f08"
-    sha256 cellar: :any,                 arm64_monterey: "76aac1bcb5f404dda840e2cfb9b9a77e55821083c0062b9766ea20e20978d9be"
-    sha256 cellar: :any,                 arm64_big_sur:  "1139791ad28dee396eae147cb90396092decdebd9b624988d321e0d9ccf2c7a3"
-    sha256 cellar: :any,                 ventura:        "32299405bd319742047b9957082a0bb1f67cfbe903edb98b10d90b99afeccae5"
-    sha256 cellar: :any,                 monterey:       "30900898a5082197283975f908fd1617f7c4fb3340157f4a90d415d160f4b313"
-    sha256 cellar: :any,                 big_sur:        "fbd417c843ccb49fa45de44831f4662a6f1275b751a93b65927932e3ba850be5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d78d9650bbb0f6b7313898a0a0544efc8efe2f7e2db0a2c13b0c5968d040c1cd"
+    sha256 cellar: :any,                 arm64_ventura:  "d34650d1b726d21185ea54d3067080e4cd8501beaeebf71c6be1be801ccb07d4"
+    sha256 cellar: :any,                 arm64_monterey: "f0b7e7b76f802f1c65c26700701d1111ca6cf23bdd93fb505f7b37f7ec36e691"
+    sha256 cellar: :any,                 arm64_big_sur:  "fc4dcf4f8d283d42eb333177c592278be165400dffa90dcb79cb7d9e6643d45e"
+    sha256 cellar: :any,                 ventura:        "235fbda31e95d0aad423e78df07005322cf0758faaf219f1ff16fe640de7023d"
+    sha256 cellar: :any,                 monterey:       "b3bd7a1cf1311ccfcc9fac651acd206de17d92543ba473b025e23881e069d97d"
+    sha256 cellar: :any,                 big_sur:        "01d81d87353c9916cbe8bed2bdb2a88150ff657b82842e35958da8b8a55b80e9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "bced96a1cbe82f4a1557fd1f5089700f349e56a5792706d7a6a2275a448019c1"
   end
 
   depends_on "pyqt-builder" => :build
