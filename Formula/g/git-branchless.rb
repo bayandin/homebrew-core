@@ -17,13 +17,13 @@ class GitBranchless < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "e6fd4b9846f02fe7d1265b5be403d9ec4df4d95708050c1ed1e830508efc0682"
-    sha256 cellar: :any,                 arm64_monterey: "314446b64fa7ef9dac53476e526676b085b86c9604d3b5ffe9c9725604bdcac9"
-    sha256 cellar: :any,                 arm64_big_sur:  "492a3d24fd20b44c74d5f15e4ac1a86e1dcb9ec844dca021e6b4f9402f9e746b"
-    sha256 cellar: :any,                 ventura:        "0bb6125cb56124637cbea4a4a6799104059d9da9658cc471f87fdbd888003dad"
-    sha256 cellar: :any,                 monterey:       "2194218f066fb8e2542427e4953a2a327703142b1d9d2ce0054e5f15070b0e72"
-    sha256 cellar: :any,                 big_sur:        "e5355e840e2af38c1a8c7ab2c8a27513eed7213f22dcf5f5ab5486d4033b7d29"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "199f61ade258d7a5a01a7726ea9ed51c8405c9c3322b042fdc450dc0e7c4f597"
+    sha256 cellar: :any,                 arm64_ventura:  "d8e78bd02c94eefa05ab21b12690308e734bc05d4e44a75e27152bbb2252c0dc"
+    sha256 cellar: :any,                 arm64_monterey: "d110f230e10e5fffa85a73ba47b5cf1caedc9e9407c0fd5fc5a5d71eeefac1fd"
+    sha256 cellar: :any,                 arm64_big_sur:  "a21285b24658f3df388e02e21f159bea00576d19ef9ea58371d1bdfb476e2a23"
+    sha256 cellar: :any,                 ventura:        "652de83e86696533f0d9637fc3b8a299c32d3f9e89628fac30aa70b7253b85ba"
+    sha256 cellar: :any,                 monterey:       "87ec040da2cb1e745f7e8ac3b71c11306f41b8e1d160f3499f97f10f4d9316dc"
+    sha256 cellar: :any,                 big_sur:        "e8350258ef29fd41b09ca1ff0ca3ca2beb8cd1e5a7886e33fe3db00892293ffc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4c5dedce96d6ff59927b7ed0917cf038cdcfc313ad528e0c8b13a6e6c8c38ad5"
   end
 
   depends_on "pkg-config" => :build
