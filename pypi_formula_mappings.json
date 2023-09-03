@@ -328,14 +328,9 @@
   },
   "fdroidserver": {
     "exclude_packages": [
-      "appnope", "asttokens", "backcall", "Brotli", "certifi", "cffi", "cryptography",
-      "decorator", "executing", "fonttools", "ipython", "jedi",
-      "matplotlib-inline", "numpy", "parso", "pathspec", "pexpect",
-      "pickleshare", "pillow", "prompt-toolkit", "ptyprocess",
-      "pure-eval", "pycparser", "Pygments", "PyYAML", "six", "stack-data",
-      "traitlets", "typing-extensions", "wcwidth", "yamllint"
-    ],
-    "extra_packages": ["wheel"]
+      "certifi", "cffi", "cryptography", "fonttools", "ipython", "lxml", "numpy", 
+      "pillow", "pygments", "pyyaml", "six", "typing-extensions", "yamllint"
+    ]
   },
   "flintrock": {
     "exclude_packages": ["cffi", "cryptography", "pycparser", "PyYAML", "six"]
