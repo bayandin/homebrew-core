@@ -537,12 +537,7 @@
   },
   "molecule": {
     "extra_packages": ["docker-py", "molecule-vagrant", "python-vagrant"],
-    "exclude_packages": [
-      "cryptography", "six", "PyYAML", "Pygments",
-      "cookiecutter", "arrow", "binaryornot", "certifi", "chardet", "charset-normalizer",
-      "click", "idna", "Jinja2", "jinja2-time", "MarkupSafe", "python-dateutil",
-      "python-slugify", "requests", "text-unidecode", "urllib3", "cffi", "pycparser"
-    ]
+    "exclude_packages": ["cryptography", "pygments", "pyyaml", "six"]
   },
   "mongo-orchestration": {
     "exclude_packages": ["certifi", "six"]
