@@ -1,8 +1,8 @@
 class Debianutils < Formula
   desc "Miscellaneous utilities specific to Debian"
   homepage "https://packages.debian.org/sid/debianutils"
-  url "https://deb.debian.org/debian/pool/main/d/debianutils/debianutils_5.10.tar.xz"
-  sha256 "55258f9955912fde0702a77db4d924ac0bce30548950320c9fef2bec520edc2a"
+  url "https://deb.debian.org/debian/pool/main/d/debianutils/debianutils_5.11.tar.xz"
+  sha256 "dc0340ab025d2daf7ac059229448a06cc5bf0570fc2b581d7f4984e8ae971abe"
   license "GPL-2.0-or-later"
 
   livecheck do
