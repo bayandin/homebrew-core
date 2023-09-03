@@ -10,13 +10,13 @@ class CargoRelease < Formula
   head "https://github.com/crate-ci/cargo-release.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "54a485d4a1ae0cfbe02ca03b575bb68ddd73a6a7f7e5b639f2eab137c13ece6c"
-    sha256 cellar: :any,                 arm64_monterey: "2284b1c54a8e06dc13949d878249d4523f05f10979b96cb2bb6a839cb4ce4e09"
-    sha256 cellar: :any,                 arm64_big_sur:  "7b0308f1484bfd4099fa5e56b43945c7d3fef87acee2674f093207c2c1e12baa"
-    sha256 cellar: :any,                 ventura:        "e61342566c8db809bd7d04e77fc7ee5ad5e3c4470bd2ac8c6a47aec022f91da2"
-    sha256 cellar: :any,                 monterey:       "96ea8160fb90776cbedd4904599a1778abe84677ed4ceebfd24920ece9375d9b"
-    sha256 cellar: :any,                 big_sur:        "d6a31e6614be4c4daf2803cc381b139ae90c71ed260a6dd4e6a943281f45d975"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "0c49772b37f68c2dda8c291b26ae9da61eebc81d582f4dab783e4ac60071341f"
+    sha256 cellar: :any,                 arm64_ventura:  "f8b1bfec6f16ce16838cf6b8210ca1d8c182dc4cb9c633fd7de6f59105b3f394"
+    sha256 cellar: :any,                 arm64_monterey: "16c0a2949f3dff1e205c8b1ee1bbe1070249b696cd3c5384b6530c25738c1c9b"
+    sha256 cellar: :any,                 arm64_big_sur:  "b9829ecd476c861567a8e346833fd722ffc67f119c638f83932b09b18772cd5b"
+    sha256 cellar: :any,                 ventura:        "5870c3bdd06cf9bbe48e8e150741d264d83eb960cd32e7bd9c6f6ffb3631e583"
+    sha256 cellar: :any,                 monterey:       "10e28093ccf6f0fb5ec7f666b2f1fb5de6b1d313f7ceb92fcd936e35ba9d860b"
+    sha256 cellar: :any,                 big_sur:        "a5c69286603566b5cabd08dae10cd218f836724621e4fc107f4442fcbc3ae19f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4faf11eaaa11c84ee73c8727e0224ec680fd2e1e219c5ac2b0c02f8d934b4994"
   end
 
   depends_on "pkg-config" => :build
