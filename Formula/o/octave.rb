@@ -8,13 +8,13 @@ class Octave < Formula
   revision 1
 
   bottle do
-    sha256 arm64_ventura:  "901b8521e343a0de60e1096397d117968b103ca557a1fb653e0607c91e7f93d0"
-    sha256 arm64_monterey: "5e7b9ff5089ff23909ed78dc0aca353ec16d45b0a582a279206cc477e932e77d"
-    sha256 arm64_big_sur:  "2b9fcc572fde1ce6264755a9338a90635d0dbda529ad75e56f5582ab90c11cd7"
-    sha256 ventura:        "ff96323b25844b0ebe6228f65c4d08ecffcc98e963ff462eafcf2ddab3ac582e"
-    sha256 monterey:       "9d746aee56b620cbd7a1a2a1b8964501f67d32e90d757b4dacce7bb7b61494fa"
-    sha256 big_sur:        "a620fd2a5338720ba4530b98bbf0855d2e959cb75cadce64667be133dd51fcd6"
-    sha256 x86_64_linux:   "a8d62533f922925cb8575cae56a02bfe0d06b2e448ab490cc57ac923dc87df15"
+    sha256 arm64_ventura:  "fb279a7fb4fef23f3931ee4b5c26d23247e8b9e19385d21137406ee8dccfde88"
+    sha256 arm64_monterey: "8d62f2881568001ab4bb4392af3f9466c3761bf32cbfe1f41ac6c2a3e0b5a7eb"
+    sha256 arm64_big_sur:  "d775c3696444b10693b52ffbf3f3eb7f4b293afc5593fd06c90cbb6bb81b7756"
+    sha256 ventura:        "b805c2d57fd7dd77f15882df068b95985ef898c518dba04a600c35bc6897adc2"
+    sha256 monterey:       "547e9fbe3f5835f1c6a0f0a7a5420bdf463103e97d266ff3d17997621592df8c"
+    sha256 big_sur:        "e4892f761d7f455dc36b7f7f69b8074dc22484cfff4ab10b67d418d54f3a61e3"
+    sha256 x86_64_linux:   "c136d09a6244c6317e23f99a9682304db7177d46429e864fe1847489236b5d6b"
   end
 
   head do
