@@ -53,6 +53,8 @@ class Octave < Formula
   depends_on "qhull"
   depends_on "qrupdate"
   depends_on "qscintilla2"
+  # Stuck on qt@5
+  # https://octave.discourse.group/t/transition-octave-to-qt6/3139/15
   depends_on "qt@5"
   depends_on "rapidjson"
   depends_on "readline"
