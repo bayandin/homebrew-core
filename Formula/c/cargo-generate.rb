@@ -10,13 +10,13 @@ class CargoGenerate < Formula
   head "https://github.com/cargo-generate/cargo-generate.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "791a92ebdb3cf161da2b1413b6208ddb9fb59bef74be16ec83764ebcf0c386e5"
-    sha256 cellar: :any,                 arm64_monterey: "f74825395f0857f6b3fea510d7b9c7842689250f44863cad71948209728763fd"
-    sha256 cellar: :any,                 arm64_big_sur:  "7757aef9ac22d7281caa3292df1f51d4cee35907ec8005eb6b9f4edd8d1cd84f"
-    sha256 cellar: :any,                 ventura:        "4a08f08e3bf1e508da6dbfe71eae3d159277b2e80c68a76c228df076ab394620"
-    sha256 cellar: :any,                 monterey:       "f4a0b758f62e76b606944bb82821a22edd120ea140b78e54afad31e8f2ced419"
-    sha256 cellar: :any,                 big_sur:        "fae60e4ec6cbd26eb15b0acc99e9af9080b3836a0d0388126b211be5072b7813"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "8b89a4aba4a58ca7e913561633f56b805ce55e43efe220d5e9eff61926f2a151"
+    sha256 cellar: :any,                 arm64_ventura:  "f8604cdaa3abbad85cebf35c31ea9094cd485846db6a1e7c1501c347a0c887a7"
+    sha256 cellar: :any,                 arm64_monterey: "5531f9d28f0987b8df1618c14756c3058249fdeaf875e9f062a5d5c2ed93e8c1"
+    sha256 cellar: :any,                 arm64_big_sur:  "bea38c9c69707163bdcfd676dc4fc6e0c0270b332ccaa108636e84053a8f3666"
+    sha256 cellar: :any,                 ventura:        "74e5a5029a89b5b8473eac07d20af0419b7480b00d818137f3cc81cee26ebf1a"
+    sha256 cellar: :any,                 monterey:       "e0281cd735b23577defc2f3a4c152aac138de326682e6f7c72cfea90395af7f4"
+    sha256 cellar: :any,                 big_sur:        "a4a4c91e2797eccb3d4ea68090e15d10e97849275a62cd158293712780711bce"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d19aecb6fd248226f867516b30c395efce81544550d7a343ba3dbd94213f51f2"
   end
 
   depends_on "pkg-config" => :build
