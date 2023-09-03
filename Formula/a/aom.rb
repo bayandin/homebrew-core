@@ -7,13 +7,13 @@ class Aom < Formula
   license "BSD-2-Clause"
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "966c8e8e10fb914ce2d6272e6f44fa6235010914bd6e1b40a6a77516bbf92949"
-    sha256 cellar: :any,                 arm64_monterey: "c0a1489fc018dc1a62b3668940b84bc302448d14d231500f5181fe70f742ae9d"
-    sha256 cellar: :any,                 arm64_big_sur:  "05e2be27ea35bb4393fa9e135997631163a0e03f7553b38bb2ef74c216898583"
-    sha256 cellar: :any,                 ventura:        "130033d7682e4cfa135ea1bf441f8fa661d55ceac06be2059667bc3506f88e78"
-    sha256 cellar: :any,                 monterey:       "ecc7821e3e1c4aea91f74229abc28d360fda9bf9f620a048b26b85ef1d7c5523"
-    sha256 cellar: :any,                 big_sur:        "acab19ae318c71f1c02c99fb60a2743a84396cb6cf53c51dca5f96bffdcc1971"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a80ca6ea6a96f353ec73175886f26d73652dbdf1a50f104b81d0775a442df24b"
+    sha256 cellar: :any,                 arm64_ventura:  "f7a81f29292f9576c49af4be37c5d331eb0ba806d585138d0a6200cab8bf9951"
+    sha256 cellar: :any,                 arm64_monterey: "08e410f001ded1db57e919b808337ed20065d7b1287ddeaf3ab20a0640fa02a5"
+    sha256 cellar: :any,                 arm64_big_sur:  "fecf629957a4e31d49d93f678c928c59f65713fc8f0d73ce22dc72c80ff988d6"
+    sha256 cellar: :any,                 ventura:        "7138ece92df570ff943e43200b6c86c2ccf0318ce6a3c2ca4a447ecf70d22a80"
+    sha256 cellar: :any,                 monterey:       "224593a9c4c88274eb176efdfb07ca80b4f51c14556d16a7f47ee9884b57147e"
+    sha256 cellar: :any,                 big_sur:        "606a97926132ce0a39a7edcda0dfd6e31174dd47b9cd279f08ffb5585e50e1b5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "1080a641f1ef2124b869b601197095449ff167a316a19cc4d8e8d8512e63658c"
   end
 
   depends_on "cmake" => :build
