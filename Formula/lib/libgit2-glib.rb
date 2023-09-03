@@ -1,21 +1,10 @@
 class Libgit2Glib < Formula
   desc "Glib wrapper library around libgit2 git access library"
   homepage "https://gitlab.gnome.org/GNOME/libgit2-glib"
+  url "https://gitlab.gnome.org/GNOME/libgit2-glib/-/archive/v1.2.0/libgit2-glib-v1.2.0.tar.bz2"
+  sha256 "421ac5c99e02c5b6235842e60eb7f9fa8dc580d2500fb1eb521ced8a22de9f29"
   license "LGPL-2.1-only"
-  revision 2
   head "https://gitlab.gnome.org/GNOME/libgit2-glib.git", branch: "master"
-
-  stable do
-    url "https://gitlab.gnome.org/GNOME/libgit2-glib/-/archive/v1.1.0/libgit2-glib-v1.1.0.tar.bz2"
-    sha256 "6cbbf43eda241cc8602fc22ccd05bbc4355d9873634bc12576346e6b22321f03"
-
-    # Add commit signing API. Needed for dependent `gitg`.
-    # Remove with `stable` block on next release.
-    patch do
-      url "https://gitlab.gnome.org/GNOME/libgit2-glib/-/commit/7f36e18f41e0b28b35c85fe8bf11d844a0001305.diff"
-      sha256 "e5a07c6bbd05b88f1d52107167d7db52f43abfd0b367645cc75b72acb623d9ff"
-    end
-  end
 
   bottle do
     sha256 cellar: :any, arm64_ventura:  "3e00a33f2d6fcaa935590ae471c1b6b0887b96a5bf04a142207dc4b861db5bcd"
