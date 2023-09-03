@@ -2,7 +2,7 @@ class Sqliteodbc < Formula
   desc "ODBC driver for SQLite"
   homepage "https://ch-werner.homepage.t-online.de/sqliteodbc/"
   url "https://ch-werner.homepage.t-online.de/sqliteodbc/sqliteodbc-0.9999.tar.gz"
-  sha256 "2c3cd6fd9d2be59d439122b0488788e5431b879a600f01117697763c5b563cf7"
+  sha256 "a8ac240e80ff2354a0e0e9ab4d3b567192ae4f3bf5d29244478663a316024732"
   license "TCL"
 
   livecheck do
@@ -37,9 +37,6 @@ class Sqliteodbc < Formula
     sha256 "83af02f2aa2b746bb7225872cab29a253264be49db0ecebb12f841562d9a2923"
   end
 
-  # Notified the author about the build patch
-  patch :DATA
-
   def install
     if Hardware::CPU.arm?
       # Workaround for ancient config files not recognizing aarch64 macos.
@@ -64,18 +61,3 @@ class Sqliteodbc < Formula
     assert_equal "SUCCESS: Loaded #{lib}/libsqlite3odbc.so\n", output
   end
 end
-
-__END__
-diff --git a/sqlite3odbc.c b/sqlite3odbc.c
-index 79361da..fbe711a 100644
---- a/sqlite3odbc.c
-+++ b/sqlite3odbc.c
-@@ -13305,7 +13305,7 @@ drvdriverconnect(SQLHDBC dbc, SQLHWND hwnd,
- 				   attas, sizeof (attas), ODBC_INI);
-     }
- #endif
--    illag[0] = '\0';
-+    ilflag[0] = '\0';
-     getdsnattr(buf, "ilike", ilflag, sizeof (ilflag));
- #ifndef WITHOUT_DRIVERMGR
-     if (dsn[0] && !ilflag[0]) {
