@@ -722,10 +722,7 @@
   "python-lsp-server": {
     "package_name": "python-lsp-server[websockets]",
     "extra_packages": ["python-lsp-black", "pylsp-mypy", "python-lsp-ruff", "pylsp-rope"],
-    "exclude_packages": [
-      "attrs", "black", "click", "mypy", "mypy-extensions", "packaging", "pathspec",
-      "platformdirs", "typing-extensions", "ruff"
-    ]
+    "exclude_packages": ["black", "mypy", "ruff"]
   },
   "python-yq": {
     "exclude_packages": ["PyYAML"]
