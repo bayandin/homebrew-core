@@ -7,6 +7,10 @@ class Pwned < Formula
   sha256 "35ea2c1ac3b2c44a11b5460d89b59df9509ecc5a94fce1306dd2f786d1e7b89d"
   license "MIT"
 
+  bottle do
+    sha256 cellar: :any_skip_relocation, all: "3920a5c684a3f16e8596a419884b7152f0ff59ea179c784e69871683adf43081"
+  end
+
   depends_on "node"
 
   def install
