@@ -11,13 +11,13 @@ class SeleniumServer < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "f55f89007f4d810886797ee2694668b4c948311d82d6417fed9ea7171be2c1a7"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "f55f89007f4d810886797ee2694668b4c948311d82d6417fed9ea7171be2c1a7"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "f55f89007f4d810886797ee2694668b4c948311d82d6417fed9ea7171be2c1a7"
-    sha256 cellar: :any_skip_relocation, ventura:        "f55f89007f4d810886797ee2694668b4c948311d82d6417fed9ea7171be2c1a7"
-    sha256 cellar: :any_skip_relocation, monterey:       "f55f89007f4d810886797ee2694668b4c948311d82d6417fed9ea7171be2c1a7"
-    sha256 cellar: :any_skip_relocation, big_sur:        "f55f89007f4d810886797ee2694668b4c948311d82d6417fed9ea7171be2c1a7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d47ec3d78127b08b3706f184aab9d4e254222820d1364509923702aab6c1f003"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "8b638fe03570e300b5a4d4c51c40d88d4b6a4f669b8ce2a2b366239ea2b92ec6"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "8b638fe03570e300b5a4d4c51c40d88d4b6a4f669b8ce2a2b366239ea2b92ec6"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "8b638fe03570e300b5a4d4c51c40d88d4b6a4f669b8ce2a2b366239ea2b92ec6"
+    sha256 cellar: :any_skip_relocation, ventura:        "8b638fe03570e300b5a4d4c51c40d88d4b6a4f669b8ce2a2b366239ea2b92ec6"
+    sha256 cellar: :any_skip_relocation, monterey:       "8b638fe03570e300b5a4d4c51c40d88d4b6a4f669b8ce2a2b366239ea2b92ec6"
+    sha256 cellar: :any_skip_relocation, big_sur:        "8b638fe03570e300b5a4d4c51c40d88d4b6a4f669b8ce2a2b366239ea2b92ec6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "21c61cf5b4788e67c0e077c48a12074b8d8c8a4f0f5c8a5730916a3bba9e7295"
   end
 
   depends_on "openjdk"
