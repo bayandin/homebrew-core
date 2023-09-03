@@ -16,6 +16,16 @@ class Cryptopp < Formula
     end
   end
 
+  bottle do
+    sha256 cellar: :any,                 arm64_ventura:  "7d03053c9802c0533b277549f9a4173ca985ac065076d5ec1846673400665177"
+    sha256 cellar: :any,                 arm64_monterey: "2e3fa5188ca17a91484735723c37272f56c26f14f71d8328b3d10ebab5ca14d8"
+    sha256 cellar: :any,                 arm64_big_sur:  "a6d82bdb7e7fb9422abfb954c2008c014c819552304b3a3dfa944ca5a73b8eaa"
+    sha256 cellar: :any,                 ventura:        "67ef7d471cc2702a3d113167ab62073dd413f408f1461e11fd18c25347293f04"
+    sha256 cellar: :any,                 monterey:       "013ce1ca4a1a3ccbe379794214bf9b9a433e77d4a6f85870acfdaa258e1d5ec1"
+    sha256 cellar: :any,                 big_sur:        "5be44e1e27595782ceac99eb8a36c43b567d9eb8db2116e5702aaaecfe9073f9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "ebdd057a75c85f69868a0d64b3da7b0f4514856f889ec959ff67408e2c3431e1"
+  end
+
   def install
     ENV.cxx11
     system "make", "all", "libcryptopp.pc"
