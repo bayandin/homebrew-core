@@ -20,7 +20,6 @@ class SeleniumServer < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "d47ec3d78127b08b3706f184aab9d4e254222820d1364509923702aab6c1f003"
   end
 
-  depends_on "geckodriver" => :test
   depends_on "openjdk"
 
   def install
@@ -37,12 +36,28 @@ class SeleniumServer < Formula
 
   test do
     port = free_port
-    fork { exec "#{bin}/selenium-server standalone --port #{port}" }
-    sleep 20
-    output = shell_output("curl --silent localhost:#{port}/status")
-    output = JSON.parse(output)
+    fork { exec "#{bin}/selenium-server standalone --selenium-manager true --port #{port}" }
 
-    assert_equal true, output["value"]["ready"]
-    assert_match version.to_s, output["value"]["nodes"].first["version"]
+    parsed_output = nil
+
+    max_attempts = 100
+    attempt = 0
+
+    loop do
+      attempt += 1
+      break if attempt > max_attempts
+
+      sleep 3
+
+      output = Utils.popen_read("curl", "--silent", "localhost:#{port}/status")
+      next unless $CHILD_STATUS.exitstatus.zero?
+
+      parsed_output = JSON.parse(output)
+      break if parsed_output["value"]["ready"]
+    end
+
+    assert !parsed_output.nil?
+    assert parsed_output["value"]["ready"]
+    assert_match version.to_s, parsed_output["value"]["nodes"].first["version"]
   end
 end
