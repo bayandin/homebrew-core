@@ -8,6 +8,16 @@ class Uhdm < Formula
   license "Apache-2.0"
   head "https://github.com/chipsalliance/UHDM.git", branch: "master"
 
+  bottle do
+    sha256 cellar: :any,                 arm64_ventura:  "603fcfd30bdb29e75ded1156f152364ffea6df466afece5c49b294cefe8675ae"
+    sha256 cellar: :any,                 arm64_monterey: "7fd82d12d05fae2cfea5dff5b0fb81f0019efbb680b066eacf10126219cb3634"
+    sha256 cellar: :any,                 arm64_big_sur:  "791a84a9622356e0575021473756bd3eb1deb14b1c33304227e4a9b575c63904"
+    sha256 cellar: :any,                 ventura:        "5b1146c774ede11adc43259efe9846f477faa80fe7b0cd5ec6132b97038527e1"
+    sha256 cellar: :any,                 monterey:       "430e489576fa08f114332a90be1c09bc39031e7dc5908637f309ebea2fc69096"
+    sha256 cellar: :any,                 big_sur:        "96f6edbfb623b7b03bcbc8e9477d29b0b542a5ebf97f876d9104952ca1e5dc5e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "4bb22de79f1b6978db5017ff3f2b9efaed408b86cd61d2e5cdcce0f49a1517f5"
+  end
+
   depends_on "cmake" => :build
   depends_on "python@3.11" => :build
   depends_on "six" => :build
