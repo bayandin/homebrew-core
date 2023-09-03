@@ -13,6 +13,7 @@ class Mutt < Formula
   url "https://bitbucket.org/mutt/mutt/downloads/mutt-2.2.11.tar.gz"
   sha256 "12325cf66d5ff8ac4bd87fac8db52c869de52dd278fc301cfd57d5a1f9f465cc"
   license "GPL-2.0-or-later"
+  revision 1
 
   bottle do
     sha256 arm64_ventura:  "e8108c04476da44364faa6d87edbf8694e5c1fff2c1fa00dc48070d974d40e1e"
@@ -36,13 +37,13 @@ class Mutt < Formula
   depends_on "automake" => :build
   depends_on "gpgme"
   depends_on "libidn2"
+  depends_on "ncurses"
   depends_on "openssl@3"
   depends_on "tokyo-cabinet"
 
   uses_from_macos "bzip2"
   uses_from_macos "cyrus-sasl"
   uses_from_macos "krb5"
-  uses_from_macos "ncurses"
   uses_from_macos "zlib"
 
   conflicts_with "tin", because: "both install mmdf.5 and mbox.5 man pages"
