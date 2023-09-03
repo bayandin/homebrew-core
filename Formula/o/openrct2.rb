@@ -8,13 +8,13 @@ class Openrct2 < Formula
   head "https://github.com/OpenRCT2/OpenRCT2.git", branch: "develop"
 
   bottle do
-    sha256 cellar: :any, arm64_ventura:  "72637787ddf5c8721bfab362617a3288648d999859768933f068c2b7156c09da"
-    sha256 cellar: :any, arm64_monterey: "557e40ac89ba94bda1fbd6042f93af02e318122ab5569ec81ad10e6e8c3299b5"
-    sha256 cellar: :any, arm64_big_sur:  "e3afce28e6afc31a8492422a11d0c8ac398be3822e43646830456f1aa230e302"
-    sha256 cellar: :any, ventura:        "7b86442ea907babb8b9cb4aca9c9c7d87b49da956e636a8f26978da2f0524d1a"
-    sha256 cellar: :any, monterey:       "9f0a3a7b60b1a5b2db0babef47c99dcef65e39a84507d72b6771fb34389caf65"
-    sha256 cellar: :any, big_sur:        "227baa4bd735425c65b9ee0ca312562f4cedd78ae61e560a8261e1b23470d0af"
-    sha256               x86_64_linux:   "441e0c42fa6325fbbcfa38d17eb20747f9a0d6dc31e2453202358f14f02889b0"
+    sha256 cellar: :any, arm64_ventura:  "df51696476437df5af49a0755f922980dc77b7f718c30c7acc41e7687d3d642d"
+    sha256 cellar: :any, arm64_monterey: "afe6bb0c3a677b1a78a4b521d0ee82b15c6d8896e85ed681b5d3ddc3990f6dab"
+    sha256 cellar: :any, arm64_big_sur:  "73210c0f7679527a8351793507e5ed96e586e11a6f627dea35b85d421c4aaaee"
+    sha256 cellar: :any, ventura:        "740c9900c72268bf5761b53940155b55eba9a860b3514c91b6fff0a08492a390"
+    sha256 cellar: :any, monterey:       "9b1569c5e1c2422912bb3170a5f95378a3e2e6d1d4ea9ea9379e399ec3e5505f"
+    sha256 cellar: :any, big_sur:        "84a3d5a9a7c135e5d33a0769a5c4c79e2281d66e1d54eb50859b1ea2be49f67b"
+    sha256               x86_64_linux:   "89076f1b729d47de34afbe3932c5b964338e234fb70859b67eb82c09d1d25662"
   end
 
   depends_on "cmake" => :build
