@@ -1,8 +1,8 @@
 class Leetup < Formula
   desc "Command-line tool to solve Leetcode problems"
   homepage "https://github.com/dragfire/leetup"
-  url "https://github.com/dragfire/leetup/archive/v1.2.0.tar.gz"
-  sha256 "d4c424d994531ed034c264611774ae258f499ee9819061c49ece1321bb96434d"
+  url "https://github.com/dragfire/leetup/archive/v1.2.2.tar.gz"
+  sha256 "b6df1d5ccef8baeaaefd0c67000b0898beb3f564d55061ac396a8e40e7cd3404"
   license "MIT"
   head "https://github.com/dragfire/leetup.git", branch: "master"
 
@@ -25,7 +25,12 @@ class Leetup < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "a88fa3418b7ded7a3f3b3e23cef5265e75d0b1e94baab86d2796ada55a3656bd"
   end
 
+  depends_on "pkg-config" => :build
   depends_on "rust" => :build
+
+  on_linux do
+    depends_on "openssl@3"
+  end
 
   def install
     system "cargo", "install", *std_cargo_args
