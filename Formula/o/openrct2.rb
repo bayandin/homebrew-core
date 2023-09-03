@@ -2,10 +2,9 @@ class Openrct2 < Formula
   desc "Open source re-implementation of RollerCoaster Tycoon 2"
   homepage "https://openrct2.io/"
   url "https://github.com/OpenRCT2/OpenRCT2.git",
-      tag:      "v0.4.5",
-      revision: "76ca8400cade0c6de5b47a7e44d405d56f278a83"
+      tag:      "v0.4.6",
+      revision: "b40b5da5a570155298335e276839a41588337b5d"
   license "GPL-3.0-only"
-  revision 2
   head "https://github.com/OpenRCT2/OpenRCT2.git", branch: "develop"
 
   bottle do
@@ -43,13 +42,13 @@ class Openrct2 < Formula
   fails_with gcc: "5" # C++17
 
   resource "title-sequences" do
-    url "https://github.com/OpenRCT2/title-sequences/releases/download/v0.4.0/title-sequences.zip"
-    sha256 "6e7c7b554717072bfc7acb96fd0101dc8e7f0ea0ea316367a05c2e92950c9029"
+    url "https://github.com/OpenRCT2/title-sequences/releases/download/v0.4.6/title-sequences.zip"
+    sha256 "24a189cdaf1f78fb6d6caede8f1ab3cedf8ab9f819cd2260a09b2cce4c710d98"
   end
 
   resource "objects" do
-    url "https://github.com/OpenRCT2/objects/releases/download/v1.3.8/objects.zip"
-    sha256 "84a95590d13a753b1d239f7f06c8d121e36fd28694b21f33646518e2012904ae"
+    url "https://github.com/OpenRCT2/objects/releases/download/v1.3.11/objects.zip"
+    sha256 "bf85d88e4fb11ca2e5915567390898747dc2459b3c7a057bdc32b829c91780b4"
   end
 
   def install
