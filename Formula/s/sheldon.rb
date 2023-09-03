@@ -10,13 +10,13 @@ class Sheldon < Formula
   head "https://github.com/rossmacarthur/sheldon.git", branch: "trunk"
 
   bottle do
-    sha256 cellar: :any,                 arm64_ventura:  "1b24b3fee34c0c3238a23b78d8232629a92bc4264f954f1e6eaa2fdd16330df1"
-    sha256 cellar: :any,                 arm64_monterey: "7b6a23932b20209f6b42659e2b4444f9dca2b2f63b51791a7cf7752a5a739e4a"
-    sha256 cellar: :any,                 arm64_big_sur:  "c6d86976e495da8790c18254cc10dafadfacbf17b4b9098c2547697451b8a3f8"
-    sha256 cellar: :any,                 ventura:        "0b2588ca3661de9c4e3a158bb00ddaa110c32d4aafc441e7e303308558697cc8"
-    sha256 cellar: :any,                 monterey:       "b5c654a04fba02a7930c78ba5587a89a401ced8840af80d217c48117b5e0ad57"
-    sha256 cellar: :any,                 big_sur:        "0c360e431327824b762897b0396d267d7e2c04039451aceeb24a75e8dbe5c9a3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3c2e08181dcf2ea7b34ce3e6c1174fb90ac60f89f9d1006b4206cd3f71a028af"
+    sha256 cellar: :any,                 arm64_ventura:  "118dc8ee031a0b2b159c66e6dbbbbd42fe407270220e5ff07de1a764dd5acdf4"
+    sha256 cellar: :any,                 arm64_monterey: "db0e38c468d5745f301fb3d90ef2f4aba554cd2e6aba7b7468349789aa25c892"
+    sha256 cellar: :any,                 arm64_big_sur:  "189fdb36ea4f1f1d95b69a6e246364bc860a6d596064f22b753fa1edd1fb12d0"
+    sha256 cellar: :any,                 ventura:        "d30c78b96cc49ee5074dcdb9bbd75e2b81305a2f940f83ea863ee8be12ef3b22"
+    sha256 cellar: :any,                 monterey:       "cb515d97b3b15a9b0b41620a7790b117f0618159bed8dbaad5199e3c2d1039d2"
+    sha256 cellar: :any,                 big_sur:        "70aced1caac7e5f67181cbf2ea32afdb73ada5be882049a9e1a94993bf8f9112"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "b5b623285df6357937868aeb66dfb6b7d610deb01686e52d84fc351d62ecb9a6"
   end
 
   depends_on "pkg-config" => :build
