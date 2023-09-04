@@ -21,9 +21,7 @@ class Jupyterlab < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "0d91a2e4d53e635339cdb1534e5b500c7b727e3a16b61dccc91449203abfab0b"
   end
 
-  depends_on "hatch" => :build
-  depends_on "python-build" => :build
-  depends_on "rust" => :build
+  depends_on "rust" => :build # for rpds-py
   depends_on "cffi"
   depends_on "ipython"
   depends_on "node"
@@ -126,11 +124,6 @@ class Jupyterlab < Formula
     sha256 "050391364c0977e768e354bdb60cbbfbee7cbb943b1af1618382021136ffd42f"
   end
 
-  resource "ipython-genutils" do
-    url "https://files.pythonhosted.org/packages/e8/69/fbeffffc05236398ebfcfb512b6d2511c622871dca1746361006da310399/ipython_genutils-0.2.0.tar.gz"
-    sha256 "eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8"
-  end
-
   resource "isoduration" do
     url "https://files.pythonhosted.org/packages/7c/1a/3c8edc664e06e6bd06cce40c6b22da5f1429aa4224d0c590f3be21c91ead/isoduration-20.11.0.tar.gz"
     sha256 "ac2f9015137935279eac671f94f89eb00584f940f5dc49462a0c4ee692ba1bd9"
@@ -214,11 +207,6 @@ class Jupyterlab < Formula
   resource "mistune" do
     url "https://files.pythonhosted.org/packages/0c/88/6862147c3203750cef135070fe9f841d82146c4206f55239592bcc27b0cd/mistune-3.0.1.tar.gz"
     sha256 "e912116c13aa0944f9dc530db38eb88f6a77087ab128f49f84a48f4c05ea163c"
-  end
-
-  resource "nbclassic" do
-    url "https://files.pythonhosted.org/packages/8b/11/6e6084bad2b2f8faa787bd5f72fd1171c741801a03872b518965d7653ba5/nbclassic-1.0.0.tar.gz"
-    sha256 "0ae11eb2319455d805596bf320336cda9554b41d99ab9a3c31bf8180bffa30e3"
   end
 
   resource "nbclient" do
@@ -332,8 +320,8 @@ class Jupyterlab < Formula
   end
 
   resource "soupsieve" do
-    url "https://files.pythonhosted.org/packages/47/9e/780779233a615777fbdf75a4dee2af7a345f4bf74b42d4a5f836800b9d91/soupsieve-2.4.1.tar.gz"
-    sha256 "89d12b2d5dfcd2c9e8c22326da9d9aa9cb3dfab0a83a024f05704076ee8d35ea"
+    url "https://files.pythonhosted.org/packages/ce/21/952a240de1c196c7e3fbcd4e559681f0419b1280c617db21157a0390717b/soupsieve-2.5.tar.gz"
+    sha256 "5663d5a7b3bfaeee0bc4372e7fc48f9cff4940b3eec54a6451cc5299f1097690"
   end
 
   resource "terminado" do
@@ -392,53 +380,25 @@ class Jupyterlab < Formula
     end
     (libexec/site_packages/"homebrew-deps.pth").write paths.join("\n")
 
-    postinstall = %w[jupyterlab-pygments notebook nbclassic]
-    linked_hatch = %w[
-      jupyter-core jupyter-client jupyter-events jupyter-server jupyter-server-terminals
-      nbformat ipykernel nbconvert
-    ]
-    linked_setuptools = %w[jupyter-console]
-    unlinked_hatch = %w[jupyterlab-server]
-    unlinked_setuptools = (
-      resources.to_set(&:name) - linked_hatch - linked_setuptools - unlinked_hatch - postinstall
-    )
-
-    pybuild = Formula["python-build"].opt_bin/"pyproject-build"
-    hatch = Formula["hatch"].opt_bin/"hatch"
-
-    # install packages into virtualenv and link specified packages
-    unlinked_setuptools.each do |r|
-      venv.pip_install resource(r)
-    end
-    unlinked_hatch.each do |r|
-      resource(r).stage do
-        system hatch, "build", "-t", "wheel"
-        venv.pip_install Dir["dist/*.whl"].first
-      end
-    end
-    linked_setuptools.each do |r|
-      venv.pip_install_and_link resource(r)
-    end
-    linked_hatch.each do |r|
-      resource(r).stage do
-        system hatch, "build", "-t", "wheel"
-        venv.pip_install_and_link Dir["dist/*.whl"].first
-      end
-    end
-
+    # install packages into virtualenv and link all jupyter extensions
+    skipped = %w[jupyterlab-pygments notebook]
+    venv.pip_install resources.reject { |r| skipped.include? r.name }
     venv.pip_install_and_link buildpath
+    bin.install_symlink (libexec/"bin").glob("jupyter*")
+
+    # These resources require `jupyterlab` to build, causing a build loop
+    # with pip's --no-binary. Since they just need `jlpm` in PATH, provide it ourselves.
+    # https://github.com/jupyterlab/jupyterlab_pygments/issues/23
+    ENV.prepend_path "PATH", bin
+    skipped.each do |r|
+      resource(r).stage do
+        inreplace "pyproject.toml", /^(requires = \[.*), "jupyterlab.*\]/, "\\1]"
+        venv.pip_install Pathname.pwd
+      end
+    end
 
     # remove bundled kernel
     (libexec/"share/jupyter/kernels").rmtree
-
-    # The "postinstall" dependencies require `jupyterlab` to build,
-    # which is why we install them at this point.
-    postinstall.each do |r|
-      resource(r).stage do
-        system pybuild, "--wheel"
-        venv.pip_install Dir["dist/*.whl"].first
-      end
-    end
 
     # install completion
     resource("jupyter-core").stage do
