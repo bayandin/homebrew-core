@@ -356,8 +356,8 @@
   },
   "gimme-aws-creds": {
     "package_name": "gimme-aws-creds",
-    "exclude_packages": ["certifi", "cffi", "cryptography", "pycparser", "six"],
-    "extra_packages": ["pyobjc-framework-LocalAuthentication", "SecretStorage", "jeepney"]
+    "exclude_packages": ["certifi", "cffi", "cryptography", "keyring", "six"],
+    "extra_packages": ["pyobjc-framework-localauthentication"]
   },
   "git-cola": {
     "exclude_packages": ["pyqt5"]
