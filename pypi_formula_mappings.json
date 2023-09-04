@@ -52,10 +52,7 @@
   },
   "ansible-lint": {
     "exclude_packages": [
-      "certifi", "cffi", "pycparser",
-      "PyYAML", "yamllint", "pathspec",
-      "ansible-core", "cryptography", "Jinja2", "MarkupSafe", "resolvelib",
-      "Pygments", "black", "click", "mypy-extensions", "platformdirs"
+      "ansible-core", "black", "certifi", "pygments", "pyyaml", "yamllint"
     ]
   },
   "arjun": {
