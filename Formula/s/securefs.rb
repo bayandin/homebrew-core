@@ -8,7 +8,7 @@ class Securefs < Formula
   head "https://github.com/netheril96/securefs.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "4ee41830ddaa8bae8ad280a3826e28895d6ee21e487fc7fa6cbf8f8d5835c8e6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "2d7cfc2e954b14e768bc2366d7680a6624a12a761acd7e087ac62da2b18d4a57"
   end
 
   depends_on "cmake" => :build
