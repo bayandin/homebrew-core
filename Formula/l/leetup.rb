@@ -16,13 +16,13 @@ class Leetup < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_ventura:  "4cb6b79c2c9a64149f91a259d62c7e327f30c523385db8c8d7dbc572cdf24332"
-    sha256 cellar: :any_skip_relocation, arm64_monterey: "723100f866721b6c8fb7417084e2496e1d68f3fc09ad2b26382781efc11fb82b"
-    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "9690647835bfade04169b89f477dc310a872487cd32836706f6bc37d83788a47"
-    sha256 cellar: :any_skip_relocation, ventura:        "f393756f6886ec72181eadfb0f546e520d613dc897a658d3c50b9c88614c4c8d"
-    sha256 cellar: :any_skip_relocation, monterey:       "931ee49f796084d159b3e92ac3c1a2bc9b38bc1fce76fd99e4c77c1c7a8dc5f1"
-    sha256 cellar: :any_skip_relocation, big_sur:        "1c0137b2499d6c3c13af9bfd17aa1c77d7640244b447632d1072d937bd3ae2bb"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "a88fa3418b7ded7a3f3b3e23cef5265e75d0b1e94baab86d2796ada55a3656bd"
+    sha256 cellar: :any_skip_relocation, arm64_ventura:  "c173d42fa3421aa14d4de8d0a98a9af0be2a08bd25fe047f49b68f07c52030f2"
+    sha256 cellar: :any_skip_relocation, arm64_monterey: "273fc93873da0cc4dbc25f18d51519f09e27ff0a0392c439c4ba4bbcdfb582ba"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur:  "52b502cbea4af8ff33bf06ec9d298c58a2ca2fffc3bfb59c7d4fbb551b28d21c"
+    sha256 cellar: :any_skip_relocation, ventura:        "e213a38572afd720990793abdcdd7b90634f1a8ab568c59a5abbe908f9cec9a4"
+    sha256 cellar: :any_skip_relocation, monterey:       "d2568cdfb47eb02b78cde01d5e5b97cdc3c965af6b117732ad31eff33c29d439"
+    sha256 cellar: :any_skip_relocation, big_sur:        "6920f2e7185df2318fcd62a1e988ca4e2137013a7cbe18a22954b4c642e94f41"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "d01d878dab60eadcea639c87c46912b5d6444ded11005bae2d812051de5713d7"
   end
 
   depends_on "pkg-config" => :build
