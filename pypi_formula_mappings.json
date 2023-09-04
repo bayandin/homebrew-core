@@ -441,10 +441,7 @@
     "exclude_packages": ["six", "tabulate", "PyYAML"]
   },
   "jrnl": {
-    "exclude_packages": [
-      "cffi", "cryptography", "keyring", "importlib-metadata", "jaraco-classes", "jeepney",
-      "more-itertools", "pycparser", "Pygments", "secretstorage", "six", "zipp"
-    ]
+    "exclude_packages": ["cffi", "cryptography", "keyring", "pygments", "six"]
   },
   "juju-wait": {
     "exclude_packages": ["PyYAML"]
@@ -819,9 +816,7 @@
     "exclude_packages": ["certifi"]
   },
   "snakefmt": {
-    "exclude_packages": [
-      "black", "click", "mypy-extensions", "packaging", "pathspec", "platformdirs", "toml"
-    ]
+    "exclude_packages": ["black", "toml"]
   },
   "snakemake": {
     "exclude_packages": ["certifi", "tabulate", "PyYAML", "docutils"]
