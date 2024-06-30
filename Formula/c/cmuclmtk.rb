@@ -30,6 +30,8 @@ class Cmuclmtk < Formula
 
   depends_on "pkg-config" => :build
 
+  conflicts_with "julius", because: "both install `binlm2arpa` binaries"
+
   # Fix -flat_namespace being used on Big Sur and later.
   patch do
     url "https://raw.githubusercontent.com/Homebrew/formula-patches/03cf8088210822aa2c1ab544ed58ea04c897d9c4/libtool/configure-pre-0.4.2.418-big_sur.diff"
@@ -40,5 +42,11 @@ class Cmuclmtk < Formula
     system "./configure", "--disable-dependency-tracking",
                           "--prefix=#{prefix}"
     system "make", "install"
+  end
+
+  test do
+    output = pipe_output("#{bin}/text2wfreq", "Hello Hello Homebrew")
+    assert_match "Hello 2", output
+    assert_match "Homebrew 1", output
   end
 end
