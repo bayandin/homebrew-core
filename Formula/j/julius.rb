@@ -24,6 +24,8 @@ class Julius < Formula
 
   uses_from_macos "zlib"
 
+  conflicts_with "cmuclmtk", because: "both install `binlm2arpa` binaries"
+
   # A pull request to fix this has been submitted upstream:
   # https://github.com/julius-speech/julius/pull/184
   patch :DATA
